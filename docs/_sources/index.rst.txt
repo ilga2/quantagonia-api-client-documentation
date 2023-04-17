@@ -1,0 +1,43 @@
+.. quantagonia-api-client documentation master file, created by
+   sphinx-quickstart on Wed Feb 22 11:17:03 2023.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+==========================================================
+Welcome to the documentation of Quantagonia's API client!
+==========================================================
+
+`Quantagonia's <https://www.quantagonia.com/>`_  API allows you to
+
+- create QUBOs,
+- import QUBOs created with
+
+   - D-Wave Ocean's `BQM <https://docs.ocean.dwavesys.com/en/stable/concepts/bqm.html>`_ and `CQM <https://docs.ocean.dwavesys.com/en/stable/concepts/cqm.html>`_
+   - `PyQUBO <https://pyqubo.readthedocs.io>`_
+   - `Qiskit's QuadraticProgram <https://qiskit.org/documentation/optimization/tutorials/01_quadratic_program.html>`_
+- convert `PulP <https://coin-or.github.io/pulp/>`_ IP problems to and solve as QUBO,
+- submit QUBOs and MIPs to Quantagonia's cloud for solving (only with valid API key).
+
+.. toctree::
+      :maxdepth: 2
+      :caption: Contents:
+      :glob:
+
+      tutorials/index
+      ref
+      release_notes
+
+Installation
+------------
+The Quantagonia API client is available via PyPi (Python >= 3.8 required).
+Simply run the following to install the package:
+
+    :code:`pip install quantagonia-api-client`
+
+Example
+---------
+
+This is a simple example of modeling and submitting a QUBO:
+
+.. literalinclude:: examples/model_qubo_native.py
+
