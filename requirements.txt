@@ -1,0 +1,11 @@
+requests
+urllib3>=1.26
+pyqubo
+pulp
+yaspin
+singledispatchmethod; python_version < '3.8'
+qiskit
+qiskit-optimization
+dwave-ocean-sdk
+concurrencytest
+parameterized
