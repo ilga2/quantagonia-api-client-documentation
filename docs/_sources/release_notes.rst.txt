@@ -1,0 +1,16 @@
+Release Notes
+=============
+
+**Version 0.55**
+
+Instead of returning only the solver log and the solution as strings, a job now additionally returns statistics like objective value, runtime, bound, etc.
+
+**Version 0.54**
+
+The QUBOSpecBuilder() now enables a scoring for the branching decisions by default.
+
+**Version 0.53**
+
+- Coefficient tightening as part of QUBO presolving is no longer supported and removed from the QUBOSpecBuilder(). 
+- It is now possible to enable quantum heuristics (e.g., via a D-Wave Simulator) for solving QUBOs. This is done by an add_quantum_heuristic()-method of the QUBOSpecBuilder().
+
