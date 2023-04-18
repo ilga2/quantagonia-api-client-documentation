@@ -1,0 +1,28 @@
+===============================
+Tutorials
+===============================
+
+Look here for a detailed tutorial on QUBOs:
+Quantum bridge analytics I: a tutorial on formulating and using QUBO models
+https://link.springer.com/article/10.1007/s10479-022-04634-2
+
+
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Contents:
+    :glob:
+
+
+    qubo_format
+    model
+    IP2Qubo
+    converter
+    specs
+
+
+
+
+
+
+
