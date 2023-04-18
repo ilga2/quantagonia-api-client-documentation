@@ -1,0 +1,81 @@
+=========
+Reference
+=========
+
+.. contents:: Table of Contents
+    :depth: 3
+
+
+.. this cuts the "quantagononia." from the classes and submodules in the ToC sidebar
+
+.. py:currentmodule:: quantagonia
+
+Modeling QUBOs
+========================
+
+.. autoclass:: quantagonia.qubo.model.QuboModel
+    :members:
+    :exclude-members: addSOS1, addSOS2
+    :autosummary:
+    :autosummary-sections: Methods
+
+
+Solving
+========
+
+.. autoclass:: quantagonia.cloud.cloud_runner.CloudRunner
+    :members:
+    :autosummary:
+
+.. _spec_builder_label:
+
+Solver Options
+---------------
+
+.. automodule:: quantagonia.spec_builder
+    :members:
+    :exclude-members:   ProblemType, QuboSolverType, SpecBuilder, set_sense, QUBOSpecBuilder
+
+.. autoclass:: QUBOSpecBuilder
+    :members:
+    :autosummary:
+        :methods:
+
+.. autoclass:: quantagonia.enums.HybridSolverOptSenses
+    :members:
+
+
+Adapters for D-Wave, PyQUBO and Qiskit
+======================================
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Contents:
+    :glob:
+
+
+.. automodule:: quantagonia.qubo.adapters
+    :members:
+    :exclude-members: QiskitQPAdapter, PyQUBOAdapter
+
+.. autoclass:: quantagonia.qubo.adapters.QiskitQPAdapter
+    :members:
+    :special-members: __init__
+
+.. autoclass:: quantagonia.qubo.adapters.PyQUBOAdapter
+    :members:
+
+
+IP2QUBO
+=========
+
+.. autoclass:: quantagonia.qubo.ip2qubo.IP2Qubo
+    :members:
+
+.. autoclass:: quantagonia.qubo.ip2qubo.IPviaQUBOSolver
+    :members:
+
+.. automodule:: quantagonia.qubo.ip2qubo
+    :members:
+    :exclude-members: IP2Qubo,IPviaQUBOSolver
+
