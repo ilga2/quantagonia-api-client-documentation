@@ -1,0 +1,88 @@
+===================================================
+Creating and Solving QUBO Problems
+===================================================
+
+.. contents:: Table of Contents
+    :depth: 3
+
+
+Creating a QUBO
+------------------
+There are several ways of creating a :class:`~quantagonia.qubo.model.QuboModel`:
+
+- creating and modeling a :class:`~quantagonia.qubo.model.QuboModel` by hand
+- load from file (:ref:`load_from_file`)
+- converting from MIP (:ref:`mip_label`), Qiskit or Ocean (:ref:`converter_label`)
+
+In this example a QUBO is modeled by hand and the resulting instance is printed:
+
+.. literalinclude:: ../examples/model_qubo_native.py
+   :lines: 1, 7-34
+
+
+.. _load_from_file:
+
+Loading and Storing QUBOs from/as files
+==========================================
+
+QUBOs can be stored in and loaded from files. See :doc:`qubo_format` for the used file format.
+
+While the path to the QUBO file can directly be given to the runner (:ref:`submit_files_label`) it is also possible to load and the edit the QUBO problem instance using
+
+.. code-block::
+
+    model = QuboModel.readQUBO("path to file") # load a qubo
+    # ...
+    # additional modeling of QUBO
+    # ...
+    model.writeQUBO("path to file") # store a qubo
+
+
+Submitting QUBOs for solving
+--------------------------------------
+
+To submit a QUBO to the Quantagonia Cloud first import the required modules and set your Quantagonia API key:
+
+.. literalinclude:: ../examples/submit_qubo.py
+   :lines: 1-5, 7
+
+Submitting a modeled instance
+================================
+
+A :class:`QuboModel` can be solved (remotely) by  creating a Runner, specs and passing both to the QuboModel`s solve function:
+
+.. literalinclude:: ../examples/model_qubo_native.py
+   :lines: 36-42
+
+.. _submit_files_label:
+
+Submitting files
+===================
+Alternatively it is possible to create the Runner and specs and simply pass a path to the problem file to the Runner.
+Both .qubo and .mps files are accepted.
+
+Here the QUBO will be loaded and solved in one step:
+
+.. literalinclude:: ../examples/submit_qubo.py
+    :lines: 6, 8-
+
+The result dictionary contains the solvers log (:code:`solver_log`), the variables assigned values in the solution (:code:`solution_file`) and the solvers final status (:code:`status`).
+This is an example return dictionary:
+
+.. code-block::
+
+    {
+        'solver_log': '\nQuantagonia HybridSolver.\nCopyright (c) 2023 Quantagonia GmbH.\nHybridSolver integrates various open-source packages; see release notes.\n\nFloating point datatype: double\nRead problem example.qubo. Num vars: 6, non-zeros: 30\nOptimization sense: maximize\nBranching rule: Maximum contribution\n\nRunning solver mix: Quantagonia HybridSolver; used hardware: CPUs\n\nStarting presolve...\nPresolve finished in 2 iterations and 0.00s. Fixed variables: 6, implications: 0\nThe problem example.qubo has 0 variables and 0 non-zeros after presolve\n\nOptimal solution found!\n\nSolver Results:\n - Solution Status: optimal\n - Wall Time: 0.00 seconds\n - Objective: 3.500000e+01\n - Bound: 3.500000e+01\n - Absolute Gap: 0.000000e+00\n - Relative Gap: 0.00 %\n - Nodes: 0\n - Nodes / s: 0.0000e+00\n\nSolver Statistics:\n - Dual fixings: 0\n - Dual fixings / Node: -- \n - Dual iterations / Node: -- \n - Clips / Node: -- \n - Dual solver oscillations / Node: -- \n',
+        'solution_file': '1\n1\n1\n1\n1\n1\n',
+        'status': 'SUCCESS'
+    }
+
+The same can also be done for multiple problems at once.
+It it is possible to submit sets of .qubo files, .mps files and mixed sets.
+Note that MIP and QUBO problems require different specs, see :ref:`spec_builder_label`.
+
+.. literalinclude:: ../examples/submit_batched.py
+    :lines: 5-
+
+Here an array of result dictionaries is returned.
+The order of the dictionaries in the array matches the order in which the problems where submitted.
