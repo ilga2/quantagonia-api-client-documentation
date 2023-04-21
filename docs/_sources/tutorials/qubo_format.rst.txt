@@ -1,0 +1,84 @@
+===================================================
+Quantagonia QUBO format
+===================================================
+
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Contents:
+    :glob:
+
+This document describes the syntax of the file format used to model problems of the form :math:`x^TQx` , where :math:`c \in \mathbb{R}` is a scalar, :math:`x\in\{0, 1\}^n` is the sought solution vector, and :math:`Q \in \mathbb{R}^{n \times n}` is a symmetric matrix.
+
+Description
+-----------
+- The file should have no header.
+- All in-line separators should be spaces.
+- The first line is a string that sets the optimization sense, which can be :code:`MINIMIZE` or :code:`MAXIMIZE`.
+- The second line needs to be a single integer: :code:`num_problems`. This number specifies the number of the QUBO matrices in the file. Each of these can, in principle, be viewed as a separate optimization problem. When there is more than 1 matrix present in a file, the solver will accumulate all problems by summing them up and reporting the solution for the accumulated problem.
+- The following structure then recurses :code:`num_problems` times. Each on a new line, we have:
+
+    - one float: :code:`penalty`.
+    - one float: :code:`offset`: constant offset of the energy
+    - two integers: :code:`n` :code:`nnz`: :code:`n` is the dimension of the problem (number of rows and columns of the QUBO matrix); :code:`nnz` is the number of non-zero entries in the upper triangle matrix
+    - for each non-zero entry in the matrix, the following is written in a new line of the file:
+
+        - two integers and a float::code:`i` :code:`j` :code:`q_{ij}`: :code:`i` is the row of the entry; :code:`j` is the column of the entry; :code:`q_{ij}` is the value at the position :code:`i`. Because the matrix :math:`Q` is symmetric, only the diagonal and upper-triangular entries of the matrix should be specified. The solver will automatically make the matrix symmetric. Formally, this means that :math:`i \le j`.
+    - a number of variable fixings, i.e., variables whose assignment is set ahead of time. The format is :code:`f ix val` where :code:`ix` is the variable’s index and :code:`val` sets the value of the variable to either :code:`0` or :code:`1`
+
+File syntax
+-----------
+.. code-block::
+
+    MAXIMIZE <--- optimization sense
+    1 <--- number of QUBO matrices in the file
+    # first QUBO matrix
+    1.0 <--- penalty
+    2.0 <--- constant energy offest
+    6 6 <--- first number: dimension, second number: number of entries
+    0 0 1.0 <-- entries
+    1 1 1.0
+    2 2 1.0
+    3 3 1.0
+    4 4 1.0
+    5 5 1.0
+    f 2 1 <--- fix variable #2 to value of 1
+    # second QUBO matrix and repeat from above
+    <second matrix>
+
+
+Here is the same problem from above, but without the comments, in a formally correct syntax:
+
+.. code-block::
+
+    MAXIMIZE
+    1
+    1.0
+    2.0
+    6 6
+    0 0 1.0
+    1 1 1.0
+    2 2 1.0
+    3 3 1.0
+    4 4 1.0
+    5 5 1.0
+    f 2 1
+
+
+
+Example
+-------
+If we take the example from above, the solver would be solving the following problem:
+
+
+.. math::
+
+   Q = \begin{bmatrix}
+   0&  0&  1&  0&  1&  0\\
+   0&  1&  0&  0&  0&  0\\
+   1&  0&  0&  0&  1&  0\\
+   0&  0&  0&  1&  0&  0\\
+   1&  0&  1&  0&  0&  0\\
+   0&  0&  0&  0&  0&  1
+   \end{bmatrix}, \quad c=3,\quad x_2 = 1
+
