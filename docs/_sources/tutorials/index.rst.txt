@@ -1,0 +1,28 @@
+===============================
+Tutorials
+===============================
+
+Welcome to this set of tutorials on QUBO format and QUBO problem solving!
+
+In this series of tutorials, we will cover a range of topics related to solving optimization problems, including the Quantagonia QUBO format, creating and solving QUBO problems, converting from IP to QUBO, and converting from other frameworks like Ocean and Qiskit.
+We will also dive into the available solver specifications to tailor the solver to your specific problem requirements.
+
+Whether you're looking to solve complex optimization problems or simply want to explore the potential of QUBO for your own research, the Quantagonia solver provides a valuable tool for achieving your goals.
+
+If you are new to the world of optimization and QUBO, we recommend `Quantum bridge analytics I: a tutorial on formulating and using QUBO models <https://link.springer.com/article/10.1007/s10479-022-04634-2>`_ [#f1]_  as an introduction to the topic.
+
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Contents:
+    :glob:
+
+
+    model
+    IP2Qubo
+    converter
+
+
+.. rubric:: Footnotes
+
+.. [#f1] Glover, Fred; Kochenberger, Gary; Du, Yu  (2019). Quantum Bridge Analytics I: a tutorial on formulating and using QUBO models. 4OR, 17(4), 335–371. doi:10.1007/s10288-019-00424-y
