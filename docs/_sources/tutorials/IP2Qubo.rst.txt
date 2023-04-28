@@ -1,0 +1,76 @@
+.. _mip_label:
+
+===================================================================
+Solving IP Problems and Conversion to QUBO
+===================================================================
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Contents:
+    :glob:
+
+Creating a MIP
+================
+
+For modeling MIP problems `PulP <https://coin-or.github.io/pulp/>`_ is supported and instances can be modeled and solved.
+It is possible to convert problems to QUBO, even though modeling and solving a problem as QUBO directly is more efficient.
+
+Note that the usage of MIP problems is limited to integer and binary variables.
+
+This is an example of creating a knapsack MIP problem instance with PulP. It is converted to QUBO and submitted for solving:
+
+.. literalinclude:: ../examples/ip2qubo_knapsack.py
+    :lines: 1-6, 9-25
+
+The :class:`QPuLPAdapter` offers a function to submit IP problems to the cloud and solve as such:
+
+.. literalinclude:: ../examples/ip2qubo_knapsack.py
+    :lines: 7-8, 32-41
+
+Alternatively MIP problems can be submitted as file, or sets of files, as described in :ref:`submit_files_label`.
+
+Solving MIP as QUBO
+======================
+
+It is possible to convert an instance created as MIP into QUBO, solve as QUBO and finally convert the result back.
+This approach serves as an abstraction layer and does not change the format of results.
+
+The feature makes it possible solve a MIP instance on quantum hardware, as the QUBOs can be solved using the QAOA algorithm or via Quantum Annealing.
+
+The conversion process is explained in detail in chapter 5 of `Quantum Bridge Analytics I: a tutorial on formulating
+and using QUBO models <https://sci-hub.hkvisa.net/10.1007/s10288-019-00424-y>`_ [#f1]_ and alternatively in the lecture `Quantum Integer
+Programming <https://bernalde.github.io/QuIP/slides/47-779%20Lecture%205%20-%20Quadratic%20Unconstrained%20Binary%20Optimization%20(QUBO).pdf>`_ [#f2]_.
+
+There are two solvers that convert an IP and then solve as a QUBO problem, the :class:`AutomaticPenaltyScalingIPviaQUBOSolver` and the :class:`OneShotIPviaQUBOSolver`.
+
+Penalty scaling is used to adjust the weights of the QUBO`s constraints to enforce them.
+
+Use either :class:`AutomaticPenaltyScalingIPviaQUBOSolver`
+
+.. literalinclude:: ../examples/ip2qubo_knapsack.py
+    :lines: 49-52
+
+to automatically scale the penalties with each iteration (`shot`) of the solution process.
+The number of shots is set via the optional argument :code:`max_iters` which defaults to 100.
+It is possible to give initial penalties as float (to be applied to all) or dictionary (individual penalties) with :code:`initial_penalty`.
+This approach sequentially submits a number of instances with different penalty to the cloud.
+With each shot the penalties are inflated if constraints are not met and decreased slightly if they are.
+The result is returned once all constraints are met or the maximum number of shots is reached.
+
+Or use :class:`OneShotIPviaQUBOSolver`:
+
+.. literalinclude:: ../examples/ip2qubo_subset_sum.py
+    :lines: 46-48
+
+This class takes a single shot and it is possible to specify the penalties via the optional argument :code:`penalty`.
+This way own metrics or a try-and-error approach can be implemented for the penalty scaling.
+
+Then start the process:
+
+.. literalinclude:: ../examples/ip2qubo_subset_sum.py
+    :lines: 49-58
+
+.. rubric:: Footnotes
+
+.. [#f1] Glover, Fred; Kochenberger, Gary; Du, Yu  (2019). Quantum Bridge Analytics I: a tutorial on formulating and using QUBO models. 4OR, 17(4), 335–371. doi:10.1007/s10288-019-00424-y
+.. [#f2] Tayur, Sridhar; Venturelli, Davide; Bernal,  David (2020). Quantum Integer Programming. 47-779 Quadratic Unconstrained Binary Optimization (QUBO). Carnegie Mellon University, Pittsburgh, Pennsylvania, USA.
