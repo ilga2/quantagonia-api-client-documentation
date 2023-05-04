@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; quantagonia-api-client - documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/icon.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/design-tabs.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Quantagonia QUBO File Format" href="qubo_format.html" />
+    <link rel="prev" title="Converting from Ocean and Qiskit" href="tutorials/converter.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            quantagonia-api-client
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Content:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#modeling-qubos">Modeling QUBOs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel"><code class="docutils literal notranslate"><span class="pre">QuboModel</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.addVariable"><code class="docutils literal notranslate"><span class="pre">QuboModel.addVariable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.eval"><code class="docutils literal notranslate"><span class="pre">QuboModel.eval()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.getNNZUpperTriangle"><code class="docutils literal notranslate"><span class="pre">QuboModel.getNNZUpperTriangle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.getNnzFullMatrix"><code class="docutils literal notranslate"><span class="pre">QuboModel.getNnzFullMatrix()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.isValid"><code class="docutils literal notranslate"><span class="pre">QuboModel.isValid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.readQUBO"><code class="docutils literal notranslate"><span class="pre">QuboModel.readQUBO()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.sense"><code class="docutils literal notranslate"><span class="pre">QuboModel.sense</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.solve"><code class="docutils literal notranslate"><span class="pre">QuboModel.solve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.solveAsync"><code class="docutils literal notranslate"><span class="pre">QuboModel.solveAsync()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.variable"><code class="docutils literal notranslate"><span class="pre">QuboModel.variable()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.writeQUBO"><code class="docutils literal notranslate"><span class="pre">QuboModel.writeQUBO()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#solving">Solving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner"><code class="docutils literal notranslate"><span class="pre">CloudRunner</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.https_client"><code class="docutils literal notranslate"><span class="pre">CloudRunner.https_client</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.interrupt_job"><code class="docutils literal notranslate"><span class="pre">CloudRunner.interrupt_job()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.interrupt_job_async"><code class="docutils literal notranslate"><span class="pre">CloudRunner.interrupt_job_async()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.solve"><code class="docutils literal notranslate"><span class="pre">CloudRunner.solve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.solveAsync"><code class="docutils literal notranslate"><span class="pre">CloudRunner.solveAsync()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.solveBatched"><code class="docutils literal notranslate"><span class="pre">CloudRunner.solveBatched()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.solveBatchedAsync"><code class="docutils literal notranslate"><span class="pre">CloudRunner.solveBatchedAsync()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.waitForJob"><code class="docutils literal notranslate"><span class="pre">CloudRunner.waitForJob()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.waitForJobAsync"><code class="docutils literal notranslate"><span class="pre">CloudRunner.waitForJobAsync()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#solver-options">Solver Options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quantagonia.spec_builder.SpecBuilder"><code class="docutils literal notranslate"><span class="pre">SpecBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.spec_builder.SpecBuilder.getd"><code class="docutils literal notranslate"><span class="pre">SpecBuilder.getd()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.spec_builder.SpecBuilder.set_option"><code class="docutils literal notranslate"><span class="pre">SpecBuilder.set_option()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.spec_builder.SpecBuilder.set_time_limit"><code class="docutils literal notranslate"><span class="pre">SpecBuilder.set_time_limit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quantagonia.spec_builder.MIPSpecBuilder"><code class="docutils literal notranslate"><span class="pre">MIPSpecBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.spec_builder.MIPSpecBuilder.set_heuristics"><code class="docutils literal notranslate"><span class="pre">MIPSpecBuilder.set_heuristics()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder"><code class="docutils literal notranslate"><span class="pre">QUBOSpecBuilder</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.root_node_only"><code class="docutils literal notranslate"><span class="pre">QUBOSpecBuilder.root_node_only()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_absolute_gap"><code class="docutils literal notranslate"><span class="pre">QUBOSpecBuilder.set_absolute_gap()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_decomposition"><code class="docutils literal notranslate"><span class="pre">QUBOSpecBuilder.set_decomposition()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_enumeration"><code class="docutils literal notranslate"><span class="pre">QUBOSpecBuilder.set_enumeration()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_max_num_nodes"><code class="docutils literal notranslate"><span class="pre">QUBOSpecBuilder.set_max_num_nodes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_node_presolve"><code class="docutils literal notranslate"><span class="pre">QUBOSpecBuilder.set_node_presolve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_objective_cutoff"><code class="docutils literal notranslate"><span class="pre">QUBOSpecBuilder.set_objective_cutoff()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_presolve"><code class="docutils literal notranslate"><span class="pre">QUBOSpecBuilder.set_presolve()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_relative_gap"><code class="docutils literal notranslate"><span class="pre">QUBOSpecBuilder.set_relative_gap()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quantagonia.enums.HybridSolverOptSenses"><code class="docutils literal notranslate"><span class="pre">HybridSolverOptSenses</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.enums.HybridSolverOptSenses.MAXIMIZE"><code class="docutils literal notranslate"><span class="pre">HybridSolverOptSenses.MAXIMIZE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.enums.HybridSolverOptSenses.MINIMIZE"><code class="docutils literal notranslate"><span class="pre">HybridSolverOptSenses.MINIMIZE</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#adapters-for-d-wave-pyqubo-qiskit">Adapters for D-Wave, PyQUBO, Qiskit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quantagonia.qubo.adapters.DWaveBQMAdapter"><code class="docutils literal notranslate"><span class="pre">DWaveBQMAdapter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.adapters.DWaveBQMAdapter.convert"><code class="docutils literal notranslate"><span class="pre">DWaveBQMAdapter.convert()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quantagonia.qubo.adapters.DWaveCQMAdapter"><code class="docutils literal notranslate"><span class="pre">DWaveCQMAdapter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.adapters.DWaveCQMAdapter.checkCQMSupported"><code class="docutils literal notranslate"><span class="pre">DWaveCQMAdapter.checkCQMSupported()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.adapters.DWaveCQMAdapter.convert"><code class="docutils literal notranslate"><span class="pre">DWaveCQMAdapter.convert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.adapters.DWaveCQMAdapter.convertLinearConstraints"><code class="docutils literal notranslate"><span class="pre">DWaveCQMAdapter.convertLinearConstraints()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.adapters.DWaveCQMAdapter.convertObjective"><code class="docutils literal notranslate"><span class="pre">DWaveCQMAdapter.convertObjective()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quantagonia.qubo.adapters.QiskitQPAdapter"><code class="docutils literal notranslate"><span class="pre">QiskitQPAdapter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.adapters.QiskitQPAdapter.__init__"><code class="docutils literal notranslate"><span class="pre">QiskitQPAdapter.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.adapters.QiskitQPAdapter.checkQPSupported"><code class="docutils literal notranslate"><span class="pre">QiskitQPAdapter.checkQPSupported()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.adapters.QiskitQPAdapter.convert"><code class="docutils literal notranslate"><span class="pre">QiskitQPAdapter.convert()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.adapters.QiskitQPAdapter.convertLinearConstraints"><code class="docutils literal notranslate"><span class="pre">QiskitQPAdapter.convertLinearConstraints()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.adapters.QiskitQPAdapter.convertObjective"><code class="docutils literal notranslate"><span class="pre">QiskitQPAdapter.convertObjective()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quantagonia.qubo.adapters.PyQUBOAdapter"><code class="docutils literal notranslate"><span class="pre">PyQUBOAdapter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.adapters.PyQUBOAdapter.convert"><code class="docutils literal notranslate"><span class="pre">PyQUBOAdapter.convert()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ip-solver-and-conversion">IP Solver and Conversion</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#quantagonia.pulp.qpulp_adapter.QPuLPAdapter"><code class="docutils literal notranslate"><span class="pre">QPuLPAdapter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.pulp.qpulp_adapter.QPuLPAdapter.getSolver"><code class="docutils literal notranslate"><span class="pre">QPuLPAdapter.getSolver()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.IP2Qubo"><code class="docutils literal notranslate"><span class="pre">IP2Qubo</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.IP2Qubo.verbose"><code class="docutils literal notranslate"><span class="pre">IP2Qubo.verbose</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.IP2Qubo.vars"><code class="docutils literal notranslate"><span class="pre">IP2Qubo.vars</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.IP2Qubo.objective"><code class="docutils literal notranslate"><span class="pre">IP2Qubo.objective</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.IP2Qubo.constraints"><code class="docutils literal notranslate"><span class="pre">IP2Qubo.constraints</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.IP2Qubo.sense"><code class="docutils literal notranslate"><span class="pre">IP2Qubo.sense</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.IP2Qubo.fromIP"><code class="docutils literal notranslate"><span class="pre">IP2Qubo.fromIP()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.IP2Qubo.toQUBO"><code class="docutils literal notranslate"><span class="pre">IP2Qubo.toQUBO()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.IPviaQUBOSolver"><code class="docutils literal notranslate"><span class="pre">IPviaQUBOSolver</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.IPviaQUBOSolver.ip2qubo"><code class="docutils literal notranslate"><span class="pre">IPviaQUBOSolver.ip2qubo</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.IPviaQUBOSolver.verbose"><code class="docutils literal notranslate"><span class="pre">IPviaQUBOSolver.verbose</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.IPviaQUBOSolver.iter"><code class="docutils literal notranslate"><span class="pre">IPviaQUBOSolver.iter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.IPviaQUBOSolver.reportSolution"><code class="docutils literal notranslate"><span class="pre">IPviaQUBOSolver.reportSolution()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.IPviaQUBOSolver.solveIP"><code class="docutils literal notranslate"><span class="pre">IPviaQUBOSolver.solveIP()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.AutomaticPenaltyScalingIPviaQUBOSolver"><code class="docutils literal notranslate"><span class="pre">AutomaticPenaltyScalingIPviaQUBOSolver</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.AutomaticPenaltyScalingIPviaQUBOSolver.initial_penalty"><code class="docutils literal notranslate"><span class="pre">AutomaticPenaltyScalingIPviaQUBOSolver.initial_penalty</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.AutomaticPenaltyScalingIPviaQUBOSolver.hsolver_type"><code class="docutils literal notranslate"><span class="pre">AutomaticPenaltyScalingIPviaQUBOSolver.hsolver_type</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.AutomaticPenaltyScalingIPviaQUBOSolver.api_key"><code class="docutils literal notranslate"><span class="pre">AutomaticPenaltyScalingIPviaQUBOSolver.api_key</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#quantagonia.qubo.ip2qubo.OneShotIPviaQUBOSolver"><code class="docutils literal notranslate"><span class="pre">OneShotIPviaQUBOSolver</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="qubo_format.html">Quantagonia QUBO File Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">quantagonia-api-client</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/ref.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<h1><a class="toc-backref" href="#id1" role="doc-backlink">API Reference</a><a class="headerlink" href="#api-reference" title="Permalink to this heading"></a></h1>
+<nav class="contents" id="table-of-contents">
+<p class="topic-title">Table of Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#api-reference" id="id1">API Reference</a></p>
+<ul>
+<li><p><a class="reference internal" href="#modeling-qubos" id="id2">Modeling QUBOs</a></p></li>
+<li><p><a class="reference internal" href="#solving" id="id3">Solving</a></p></li>
+<li><p><a class="reference internal" href="#solver-options" id="id4">Solver Options</a></p></li>
+<li><p><a class="reference internal" href="#adapters-for-d-wave-pyqubo-qiskit" id="id5">Adapters for D-Wave, PyQUBO, Qiskit</a></p></li>
+<li><p><a class="reference internal" href="#ip-solver-and-conversion" id="id6">IP Solver and Conversion</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<section id="modeling-qubos">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Modeling QUBOs</a><a class="headerlink" href="#modeling-qubos" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.qubo.model.</span></span><span class="sig-name descname"><span class="pre">QuboModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sense</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#quantagonia.enums.HybridSolverOptSenses" title="quantagonia.enums.HybridSolverOptSenses"><span class="pre">HybridSolverOptSenses</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">HybridSolverOptSenses.MAXIMIZE</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel" title="Permalink to this definition"></a></dt>
+<dd><p>A class representing a Quadratic Unconstrained Binary Optimization (QUBO) problem instance.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.addVariable" title="quantagonia.qubo.model.QuboModel.addVariable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">addVariable</span></code></a>(name[, initial, fixing, ...])</p></td>
+<td><p>Adds a new variable to the QUBO.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.eval" title="quantagonia.qubo.model.QuboModel.eval"><code class="xref py py-obj docutils literal notranslate"><span class="pre">eval</span></code></a>()</p></td>
+<td><p>Returns the objective function value for the current variable assignment.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.getNNZUpperTriangle" title="quantagonia.qubo.model.QuboModel.getNNZUpperTriangle"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getNNZUpperTriangle</span></code></a>()</p></td>
+<td><p>Get the number of nonzero entries for the upper triangle matrix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.getNnzFullMatrix" title="quantagonia.qubo.model.QuboModel.getNnzFullMatrix"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getNnzFullMatrix</span></code></a>()</p></td>
+<td><p>Compute number of nonzero entries of the full matrix on demand.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.isValid" title="quantagonia.qubo.model.QuboModel.isValid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">isValid</span></code></a>()</p></td>
+<td><p>Checks that all terms are in the upper triangle and that they have been reduced in the right way.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.readQUBO" title="quantagonia.qubo.model.QuboModel.readQUBO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">readQUBO</span></code></a>(path)</p></td>
+<td><p>Reads a QUBO from file.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.solve" title="quantagonia.qubo.model.QuboModel.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solve</span></code></a>(specs, runner)</p></td>
+<td><p>Solves the QUBO using the specified Runner.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.solveAsync" title="quantagonia.qubo.model.QuboModel.solveAsync"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solveAsync</span></code></a>(specs, runner)</p></td>
+<td><p>Solves the QUBO asynchronously using the specified Runner.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.variable" title="quantagonia.qubo.model.QuboModel.variable"><code class="xref py py-obj docutils literal notranslate"><span class="pre">variable</span></code></a>(name)</p></td>
+<td><p>Returns the <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboVariable</span></code> with the specified name.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel.writeQUBO" title="quantagonia.qubo.model.QuboModel.writeQUBO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">writeQUBO</span></code></a>(path)</p></td>
+<td><p>Writes QUBO to file in the Quantagonia QUBO format.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.addVariable">
+<span class="sig-name descname"><span class="pre">addVariable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixing</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_warnings</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.addVariable" title="Permalink to this definition"></a></dt>
+<dd><p>Adds a new variable to the QUBO.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>QUBO Variables are binary and can take a value in {0, 1, None}.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The name of the variable.</p></li>
+<li><p><strong>initial</strong> (<em>Any</em>) – The initial value of the variable. Defaults to <cite>None</cite>.</p></li>
+<li><p><strong>fixing</strong> (<em>Any</em>) – The value to which the variable should be fixed. Defaults to <cite>None</cite>.</p></li>
+<li><p><strong>disable_warnings</strong> (<em>bool</em>) – If <cite>True</cite>, disables the warning message that is displayed when a variable with the same name is already in the QUBO. Defaults to <cite>False</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboVariable</span></code> that was added to the QUBO.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QuboVariable</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Warning</strong> – If initial not in {0, 1, None}.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.eval">
+<span class="sig-name descname"><span class="pre">eval</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.eval" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the objective function value for the current variable assignment. After solving, it provides the optimal value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the QUBO’s objective function.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.getNNZUpperTriangle">
+<span class="sig-name descname"><span class="pre">getNNZUpperTriangle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.getNNZUpperTriangle" title="Permalink to this definition"></a></dt>
+<dd><p>Get the number of nonzero entries for the upper triangle matrix. This corresponds to the number of terms in the objective function, excluding the shift.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Integer representing the number of nonzero entries for the upper triangle matrix.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.getNnzFullMatrix">
+<span class="sig-name descname"><span class="pre">getNnzFullMatrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.getNnzFullMatrix" title="Permalink to this definition"></a></dt>
+<dd><p>Compute number of nonzero entries of the full matrix on demand.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Integer representing the number of nonzero entries of the full matrix.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.isValid">
+<span class="sig-name descname"><span class="pre">isValid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.isValid" title="Permalink to this definition"></a></dt>
+<dd><p>Checks that all terms are in the upper triangle and that they have been reduced in the right way.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Indicating whether conditions are all true.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.readQUBO">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">readQUBO</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.readQUBO" title="Permalink to this definition"></a></dt>
+<dd><p>Reads a QUBO from file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – String containing the path to the QUBO file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The QUBO.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel">QuboModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.sense">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sense</span></span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.sense" title="Permalink to this definition"></a></dt>
+<dd><p>The optimization sense of the QUBO.</p>
+<p>The function <code class="code docutils literal notranslate"><span class="pre">sense()</span></code> returns the current QUBO’s optimization sense if there is no argument. When passed a <cite>HybridSolverOptSenses</cite> member it sets the optimization sense to the specified value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>sense</strong> (<a class="reference internal" href="#quantagonia.enums.HybridSolverOptSenses" title="quantagonia.enums.HybridSolverOptSenses"><em>HybridSolverOptSenses</em></a>) – (optional) An enum representing the optimization sense of the QUBO. Can be either <cite>HybridSolverOptSenses.MINIMIZE</cite> or <cite>HybridSolverOptSenses.MAXIMIZE</cite>.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – If the <cite>sense</cite> argument is not a valid optimization sense value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.solve">
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">specs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Runner</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.solve" title="Permalink to this definition"></a></dt>
+<dd><p>Solves the QUBO using the specified Runner.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>specs</strong> (<em>dict</em>) – A dictionary of solver options and parameters.</p></li>
+<li><p><strong>runner</strong> (<a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner" title="quantagonia.cloud.cloud_runner.CloudRunner"><em>CloudRunner</em></a>) – Runner instance used to solve the QUBO.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of solver results. It contains a dictionary containing the keys ‘solution_file’,’status’, ‘solver_log’, ‘sol_status’, ‘timing’, ‘objective’, ‘bound’, ‘absolute_gap’, ‘relative_gap’, ‘iterations’, ‘nodes’, ‘nodes_per_sec’, ‘best_node’, ‘best_time’, ‘num_quantum_solutions’, ‘solver_mix’, and ‘solution’.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.solveAsync">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solveAsync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">specs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">runner</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Runner</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.solveAsync" title="Permalink to this definition"></a></dt>
+<dd><p>Solves the QUBO asynchronously using the specified Runner.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>specs</strong> (<em>dict</em>) – A dictionary of solver options and parameters.</p></li>
+<li><p><strong>runner</strong> (<a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner" title="quantagonia.cloud.cloud_runner.CloudRunner"><em>CloudRunner</em></a>) – Runner instance used to solve the QUBO.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of solver results. It contains a dictionary containing the keys ‘solution_file’,’status’, ‘solver_log’, ‘sol_status’, ‘timing’, ‘objective’, ‘bound’, ‘absolute_gap’, ‘relative_gap’, ‘iterations’, ‘nodes’, ‘nodes_per_sec’, ‘best_node’, ‘best_time’, ‘num_quantum_solutions’, ‘solver_mix’, and ‘solution’.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.variable">
+<span class="sig-name descname"><span class="pre">variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.variable" title="Permalink to this definition"></a></dt>
+<dd><p>Returns the <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboVariable</span></code> with the specified name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – A string of the name of the <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboVariable</span></code> to retrieve.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboVariable</span></code> with the specified name.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QuboVariable</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>KeyError</strong> – If no <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboVariable</span></code> with the specified name exists in the QUBO.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.writeQUBO">
+<span class="sig-name descname"><span class="pre">writeQUBO</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.writeQUBO" title="Permalink to this definition"></a></dt>
+<dd><p>Writes QUBO to file in the Quantagonia QUBO format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path as string to the destined file.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>Exception</strong> – If the QUBO is not valid.</p></li>
+<li><p><strong>FileNotFoundError</strong> – If the path or file cannot be found.</p></li>
+<li><p><strong>PermissionError</strong> – If program does not have sufficient permissions to access the file.</p></li>
+<li><p><strong>TypeError</strong> – If path is not a string.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="solving">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Solving</a><a class="headerlink" href="#solving" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.cloud.cloud_runner.CloudRunner">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.cloud.cloud_runner.</span></span><span class="sig-name descname"><span class="pre">CloudRunner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HybridSolverServers</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">HybridSolverServers.PROD</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_log</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.cloud.cloud_runner.CloudRunner" title="Permalink to this definition"></a></dt>
+<dd><p>Runner subclass that provides functionality for submitting and solving QUBO and MIP instances to the cloud.
+The results are returned as dictionaries containing the keys ‘solver_log’, ‘solution_file’, and ‘status’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>api_key</strong> (<em>str</em>) – The API key string used to authenticate with the cloud.</p></li>
+<li><p><strong>server</strong> (<em>HybridSolverServers</em>) – (optional) The ‘HybridSolverServers’ to use for the hybrid solver service, defaults to the
+production server. Defaults to ‘HybridSolverServers.PROD’.</p></li>
+<li><p><strong>suppress_log</strong> (<em>bool</em>) – (optional) Boolean indicating whether to suppress logging output from the runner, defaults to False.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantagonia.cloud.cloud_runner.CloudRunner.https_client">
+<span class="sig-name descname"><span class="pre">https_client</span></span><a class="headerlink" href="#quantagonia.cloud.cloud_runner.CloudRunner.https_client" title="Permalink to this definition"></a></dt>
+<dd><p>The ‘SpecsHTTPSClient’ used for making requests to the hybrid solver service.</p>
+</dd></dl>
+
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.interrupt_job" title="quantagonia.cloud.cloud_runner.CloudRunner.interrupt_job"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interrupt_job</span></code></a>(jobid)</p></td>
+<td><p>Sends an interrupt signal to stop the execution of the specified job.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.interrupt_job_async" title="quantagonia.cloud.cloud_runner.CloudRunner.interrupt_job_async"><code class="xref py py-obj docutils literal notranslate"><span class="pre">interrupt_job_async</span></code></a>(jobid)</p></td>
+<td><p>Asynchronously sends an interrupt signal to stop the execution of a submitted job.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.solve" title="quantagonia.cloud.cloud_runner.CloudRunner.solve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solve</span></code></a>(problem_file, spec, **kwargs)</p></td>
+<td><p>Submits a QUBO or MIP instance to the cloud for solving.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.solveAsync" title="quantagonia.cloud.cloud_runner.CloudRunner.solveAsync"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solveAsync</span></code></a>(problem_file, spec, **kwargs)</p></td>
+<td><p>Asynchonously submits a QUBO or MIP instance to the cloud for solving.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.solveBatched" title="quantagonia.cloud.cloud_runner.CloudRunner.solveBatched"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solveBatched</span></code></a>(problem_files, specs, **kwargs)</p></td>
+<td><p>Submits a set of QUBO or MIP instances to the cloud for solving.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.solveBatchedAsync" title="quantagonia.cloud.cloud_runner.CloudRunner.solveBatchedAsync"><code class="xref py py-obj docutils literal notranslate"><span class="pre">solveBatchedAsync</span></code></a>(problem_files, specs, **kwargs)</p></td>
+<td><p>Asynchronously submits a set of QUBO or MIP instances to the cloud for solving.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.waitForJob" title="quantagonia.cloud.cloud_runner.CloudRunner.waitForJob"><code class="xref py py-obj docutils literal notranslate"><span class="pre">waitForJob</span></code></a>(jobid, poll_frequency, timeout, ...)</p></td>
+<td><p>Polls the status of a job identified by <cite>jobid</cite> until it reaches a final status or until the timeout is exceeded.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#quantagonia.cloud.cloud_runner.CloudRunner.waitForJobAsync" title="quantagonia.cloud.cloud_runner.CloudRunner.waitForJobAsync"><code class="xref py py-obj docutils literal notranslate"><span class="pre">waitForJobAsync</span></code></a>(jobid, poll_frequency, ...)</p></td>
+<td><p>Asynchronously polls the status of a job identified by <cite>jobid</cite> until it reaches a final status or until the timeout is exceeded.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.cloud.cloud_runner.CloudRunner.interrupt_job">
+<span class="sig-name descname"><span class="pre">interrupt_job</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobid:</span> <span class="pre">&lt;module</span> <span class="pre">'uuid'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.9/uuid.py'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.cloud.cloud_runner.CloudRunner.interrupt_job" title="Permalink to this definition"></a></dt>
+<dd><p>Sends an interrupt signal to stop the execution of the specified job.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>jobid</strong> (<em>uuid</em>) – The UUID of the job to be interrupted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the response from the server.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.cloud.cloud_runner.CloudRunner.interrupt_job_async">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">interrupt_job_async</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobid:</span> <span class="pre">&lt;module</span> <span class="pre">'uuid'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.9/uuid.py'&gt;</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.cloud.cloud_runner.CloudRunner.interrupt_job_async" title="Permalink to this definition"></a></dt>
+<dd><p>Asynchronously sends an interrupt signal to stop the execution of a submitted job.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>jobid</strong> (<em>uuid</em>) – The UUID of the job to be interrupted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A dictionary containing the response from the server.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.cloud.cloud_runner.CloudRunner.solve">
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.cloud.cloud_runner.CloudRunner.solve" title="Permalink to this definition"></a></dt>
+<dd><p>Submits a QUBO or MIP instance to the cloud for solving.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>problem_file</strong> (<em>str</em>) – Path to problem file as string.</p></li>
+<li><p><strong>spec</strong> (<em>dict</em>) – A dictionary of solver options and parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>submit_callback</strong> – (optional) Custom callback function that is called when a job is submitted. Defaults to None.</p></li>
+<li><p><strong>poll_frequency</strong> (<em>float</em>) – (optional) The frequency (as float, in seconds) at which the function should poll for job status. Defaults to 1.</p></li>
+<li><p><strong>new_incumbent_callback</strong> – (optional) A callback function to call if a new incumbent is found in the batch item. Defaults to None.</p></li>
+<li><p><strong>timeout</strong> (<em>float</em>) – (optional) The maximum amount of time (as float, in seconds) to wait for the job to finish before timing out. Defaults to 14400.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Solver results as dictionary containing the keys ‘solution_file’, ‘status’, ‘solver_log’, ‘sol_status’, ‘timing’, ‘objective’, ‘bound’, ‘absolute_gap’, ‘relative_gap’, ‘iterations’, ‘nodes’, ‘nodes_per_sec’, ‘best_node’, ‘best_time’,     ‘num_quantum_solutions’, ‘solver_mix’, and ‘solution’.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.cloud.cloud_runner.CloudRunner.solveAsync">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solveAsync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem_file</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.cloud.cloud_runner.CloudRunner.solveAsync" title="Permalink to this definition"></a></dt>
+<dd><p>Asynchonously submits a QUBO or MIP instance to the cloud for solving.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>problem_file</strong> (<em>str</em>) – Path to problem file as string.</p></li>
+<li><p><strong>spec</strong> (<em>dict</em>) – A dictionary of solver options and parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>submit_callback</strong> – (optional) Custom callback function that is called when a job is submitted. Defaults to None.</p></li>
+<li><p><strong>poll_frequency</strong> (<em>float</em>) – (optional) The frequency (as float, in seconds) at which the function should poll for job status. Defaults to 1.</p></li>
+<li><p><strong>new_incumbent_callback</strong> – (optional) A callback function to call if a new incumbent is found in the batch item. Defaults to None.</p></li>
+<li><p><strong>timeout</strong> (<em>float</em>) – (optional) The maximum amount of time (as float, in seconds) to wait for the job to finish before timing out. Defaults to 14400.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Solver results as dictionary containing the keys ‘solution_file’,’status’, ‘solver_log’, ‘sol_status’, ‘timing’, ‘objective’, ‘bound’, ‘absolute_gap’, ‘relative_gap’, ‘iterations’, ‘nodes’, ‘nodes_per_sec’, ‘best_node’, ‘best_time’, ‘num_quantum_solutions’, ‘solver_mix’, and ‘solution’.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.cloud.cloud_runner.CloudRunner.solveBatched">
+<span class="sig-name descname"><span class="pre">solveBatched</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.cloud.cloud_runner.CloudRunner.solveBatched" title="Permalink to this definition"></a></dt>
+<dd><p>Submits a set of QUBO or MIP instances to the cloud for solving.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>problem_files</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of paths to problem files as string.</p></li>
+<li><p><strong>specs</strong> (<em>List</em><em>[</em><em>dict</em><em>]</em>) – List of dictionaries of solver options and parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>submit_callback</strong> – (optional) Custom callback function that is called when a job is submitted. Defaults to None.</p></li>
+<li><p><strong>poll_frequency</strong> (<em>float</em>) – (optional) The frequency (as float, in seconds) at which the function should poll for job status. Defaults to 1.</p></li>
+<li><p><strong>new_incumbent_callback</strong> – (optional) A callback function to call if a new incumbent is found in the batch item. Defaults to None.</p></li>
+<li><p><strong>timeout</strong> (<em>float</em>) – (optional) The maximum amount of time (as float, in seconds) to wait for the job to finish before timing out. Defaults to 14400.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of solver results. For each submitted instance it contains a dictionary with the keys ‘solution_file’,’status’, ‘solver_log’, ‘sol_status’, ‘timing’, ‘objective’, ‘bound’, ‘absolute_gap’, ‘relative_gap’, ‘iterations’, ‘nodes’, ‘nodes_per_sec’, ‘best_node’, ‘best_time’, ‘num_quantum_solutions’, ‘solver_mix’, and ‘solution’.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[Dict[str, Any]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.cloud.cloud_runner.CloudRunner.solveBatchedAsync">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">solveBatchedAsync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">problem_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">specs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.cloud.cloud_runner.CloudRunner.solveBatchedAsync" title="Permalink to this definition"></a></dt>
+<dd><p>Asynchronously submits a set of QUBO or MIP instances to the cloud for solving.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>problem_files</strong> (<em>List</em><em>[</em><em>str</em><em>]</em>) – List of paths to problem files as string.</p></li>
+<li><p><strong>specs</strong> (<em>List</em><em>[</em><em>dict</em><em>]</em>) – List of dictionaries of solver options and parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>submit_callback</strong> – (optional) Custom callback function that is called when a job is submitted. Defaults to None.</p></li>
+<li><p><strong>poll_frequency</strong> (<em>float</em>) – (optional) The frequency (as float, in seconds) at which the function should poll for job status. Defaults to 1.</p></li>
+<li><p><strong>new_incumbent_callback</strong> – (optional) A callback function to call if a new incumbent is found in the batch item. Defaults to None.</p></li>
+<li><p><strong>timeout</strong> (<em>float</em>) – (optional) The maximum amount of time (as float, in seconds) to wait for the job to finish before timing out. Defaults to 14400.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of solver results. For each submitted instance it contains a dictionary containing the keys ‘solution_file’,’status’, ‘solver_log’, ‘sol_status’, ‘timing’, ‘objective’, ‘bound’, ‘absolute_gap’, ‘relative_gap’, ‘iterations’, ‘nodes’, ‘nodes_per_sec’, ‘best_node’, ‘best_time’, ‘num_quantum_solutions’, ‘solver_mix’, and ‘solution’.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>List[Dict[str, Any]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.cloud.cloud_runner.CloudRunner.waitForJob">
+<span class="sig-name descname"><span class="pre">waitForJob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobid:</span> <span class="pre">&lt;module</span> <span class="pre">'uuid'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.9/uuid.py'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poll_frequency:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver_logs:</span> <span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_incumbent_callback=None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JobStatus</span></span></span><a class="headerlink" href="#quantagonia.cloud.cloud_runner.CloudRunner.waitForJob" title="Permalink to this definition"></a></dt>
+<dd><p>Polls the status of a job identified by <cite>jobid</cite> until it reaches a final status or until the timeout is exceeded. The function updates the solver logs and calls the new incumbent callback function if a new incumbent is found in the batch item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jobid</strong> – A UUID object that identifies the job to poll the status for.</p></li>
+<li><p><strong>poll_frequency</strong> – The frequency (as float, in seconds) at which the function should poll for job status.</p></li>
+<li><p><strong>timeout</strong> – The maximum amount of time (as float, in seconds) to wait for the job to finish before timing out.</p></li>
+<li><p><strong>solver_logs</strong> – A list of <cite>SolverLog</cite> objects to update with the current log of the job.</p></li>
+<li><p><strong>batch_size</strong> – The size of the batch for the job as an integer.</p></li>
+<li><p><strong>new_incumbent_callback</strong> – (optional) A callback function to call if a new incumbent is found in the batch item. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A <cite>JobStatus</cite> enum value indicating whether the job has finished, terminated, or timed out.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>JobStatus</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.cloud.cloud_runner.CloudRunner.waitForJobAsync">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">waitForJobAsync</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobid:</span> <span class="pre">&lt;module</span> <span class="pre">'uuid'</span> <span class="pre">from</span> <span class="pre">'/usr/lib/python3.9/uuid.py'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">poll_frequency:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout:</span> <span class="pre">float</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">solver_logs:</span> <span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">batch_size:</span> <span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_incumbent_callback=None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JobStatus</span></span></span><a class="headerlink" href="#quantagonia.cloud.cloud_runner.CloudRunner.waitForJobAsync" title="Permalink to this definition"></a></dt>
+<dd><p>Asynchronously polls the status of a job identified by <cite>jobid</cite> until it reaches a final status or until the timeout is exceeded. The function updates the solver logs and calls the new incumbent callback function if a new incumbent is found in the batch item.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>jobid</strong> – A UUID that identifies the job to poll the status for.</p></li>
+<li><p><strong>poll_frequency</strong> – The frequency (as float, in seconds) at which the function should poll for job status.</p></li>
+<li><p><strong>timeout</strong> – The maximum amount of time (as float, in seconds) to wait for the job to finish before timing out.</p></li>
+<li><p><strong>solver_logs</strong> – A list of <cite>SolverLog</cite> objects to update with the current log of the job.</p></li>
+<li><p><strong>batch_size</strong> – The size of the batch for the job as integer.</p></li>
+<li><p><strong>new_incumbent_callback</strong> – (optional) A callback function to call if a new incumbent is found in the batch item. Defaults to None.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A <cite>JobStatus</cite> enum value indicating whether the job has finished, terminated, or timed out.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>JobStatus</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="solver-options">
+<span id="spec-builder-label"></span><h2><a class="toc-backref" href="#id4" role="doc-backlink">Solver Options</a><a class="headerlink" href="#solver-options" title="Permalink to this heading"></a></h2>
+<p>When submitting a problem instance the solver it is sent alongside a file containing a set of solver options (specs) that specify various solver parameters.
+The <code class="xref py py-class docutils literal notranslate"><span class="pre">MIPSpecBuilder</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">QUBOSpecBuilder</span></code> classes facilitate this process by returning an object that holds the default options
+while also providing functions to modify them as needed.</p>
+<p>These are the default solver specs as JSON file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;version&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="s2">&quot;absolute_gap&quot;</span><span class="p">:</span> <span class="mf">1e-09</span><span class="p">,</span>
+  <span class="s2">&quot;relative_gap&quot;</span><span class="p">:</span> <span class="mf">1e-4</span><span class="p">,</span>
+  <span class="s2">&quot;time_limit&quot;</span><span class="p">:</span> <span class="mi">3600</span><span class="p">,</span>
+  <span class="s2">&quot;epsilon&quot;</span><span class="p">:</span> <span class="mf">1e-9</span><span class="p">,</span>
+  <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="mi">36848232890347</span><span class="p">,</span>
+  <span class="s2">&quot;presolve&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;coeff_strengthening&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;decompose&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;maxiter&quot;</span><span class="p">:</span> <span class="mi">100000</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;node_presolve&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;node_implications&quot;</span> <span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;branching_rule&quot;</span><span class="p">:</span> <span class="s2">&quot;MAX_CONTRIBUTION&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;branching_scoring&quot;</span> <span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+  <span class="s2">&quot;enumerate&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;enabled&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;enumeration_algorithm&quot;</span><span class="p">:</span> <span class="s2">&quot;CPU_GRAY&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;enumeration_threshold&quot;</span><span class="p">:</span> <span class="mi">16</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;primal_solver&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;NO_SOLVER&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;runs&quot;</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;dual_solver&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">&quot;runs&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FRANK_WOLFE&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;maxiter&quot;</span><span class="p">:</span> <span class="mi">500000</span><span class="p">,</span>
+    <span class="s2">&quot;max_dual_gap&quot;</span><span class="p">:</span> <span class="mf">1e-02</span><span class="p">,</span>
+    <span class="s2">&quot;max_rel_dual_gap&quot;</span><span class="p">:</span> <span class="mf">1e-05</span><span class="p">,</span>
+    <span class="s2">&quot;smasher_step&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s2">&quot;smasher_eps&quot;</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">,</span>
+    <span class="s2">&quot;dual_root_node_SDP&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;dual_fixings&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;dual_implications&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s2">&quot;convexification&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;SDP_SHIFT&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;variant&quot;</span><span class="p">:</span> <span class="s2">&quot;PROJECTION&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.SpecBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.spec_builder.</span></span><span class="sig-name descname"><span class="pre">SpecBuilder</span></span><a class="headerlink" href="#quantagonia.spec_builder.SpecBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>Abstract spec builder base class for <a class="reference internal" href="#quantagonia.spec_builder.MIPSpecBuilder" title="quantagonia.spec_builder.MIPSpecBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">MIPSpecBuilder</span></code></a> and <a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder" title="quantagonia.spec_builder.QUBOSpecBuilder"><code class="xref py py-class docutils literal notranslate"><span class="pre">QUBOSpecBuilder</span></code></a>.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.spec_builder.SpecBuilder.getd" title="quantagonia.spec_builder.SpecBuilder.getd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getd</span></code></a>()</p></td>
+<td><p>Returns currently set solver options as dictionary.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#quantagonia.spec_builder.SpecBuilder.set_option" title="quantagonia.spec_builder.SpecBuilder.set_option"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_option</span></code></a>(option, value)</p></td>
+<td><p>Sets specified option to specified value.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.spec_builder.SpecBuilder.set_time_limit" title="quantagonia.spec_builder.SpecBuilder.set_time_limit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_time_limit</span></code></a>(time_limit)</p></td>
+<td><p>Sets time limit.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.SpecBuilder.getd">
+<span class="sig-name descname"><span class="pre">getd</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="headerlink" href="#quantagonia.spec_builder.SpecBuilder.getd" title="Permalink to this definition"></a></dt>
+<dd><p>Returns currently set solver options as dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary containing solver options.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.SpecBuilder.set_option">
+<span class="sig-name descname"><span class="pre">set_option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#quantagonia.spec_builder.SpecBuilder.set_option" title="Permalink to this definition"></a></dt>
+<dd><p>Sets specified option to specified value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>option</strong> (<em>str</em>) – Name of option.</p></li>
+<li><p><strong>value</strong> (<em>Any</em>) – value of option.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.SpecBuilder.set_time_limit">
+<span class="sig-name descname"><span class="pre">set_time_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.spec_builder.SpecBuilder.set_time_limit" title="Permalink to this definition"></a></dt>
+<dd><p>Sets time limit.</p>
+<p>We can set a time limit to interupt the solver after the given time and return the best found solution along with the optimality gap.
+The optimality gap tells you how much more potential there could be in the optimization process.</p>
+<p>Note that with ordinary quantum annealers you only retrieve a solution without knowing how far it might be away from an optimal solution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time_limit</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># seconds</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">set_time_limit</span><span class="p">(</span><span class="n">time_limit</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.MIPSpecBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.spec_builder.</span></span><span class="sig-name descname"><span class="pre">MIPSpecBuilder</span></span><a class="headerlink" href="#quantagonia.spec_builder.MIPSpecBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>A class for building Mixed Integer Programming (MIP) problem specifications.</p>
+<p>This class extends the <cite>SpecBuilder</cite> base class and sets the <cite>problem_type</cite> option to “MIP”.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.spec_builder.MIPSpecBuilder.set_heuristics" title="quantagonia.spec_builder.MIPSpecBuilder.set_heuristics"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_heuristics</span></code></a>(heuristics)</p></td>
+<td><p>Sets the <cite>mip_heuristic_effort</cite> option to a float in range of [0, 1].</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.MIPSpecBuilder.set_heuristics">
+<span class="sig-name descname"><span class="pre">set_heuristics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">heuristics</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.spec_builder.MIPSpecBuilder.set_heuristics" title="Permalink to this definition"></a></dt>
+<dd><p>Sets the <cite>mip_heuristic_effort</cite> option to a float in range of [0, 1].</p>
+<p>The variable controls the percentage of time used on heuristics.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>heuristics</strong> (<em>float</em>) – A float.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>TypeError</strong> – If the <cite>heuristics</cite> argument is not a float.</p></li>
+<li><p><strong>ValueError</strong> – If the <cite>heuristics</cite> argument is not within the valid range of [0, 1].</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.QUBOSpecBuilder">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.spec_builder.</span></span><span class="sig-name descname"><span class="pre">QUBOSpecBuilder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/home/quantagonia/jenkins/workspace/quantagonia-api-client-update-documentation/gitlab_dir/quantagonia/default_spec.json'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.spec_builder.QUBOSpecBuilder" title="Permalink to this definition"></a></dt>
+<dd><p>A class for building Quadratic Unconstrained Binary Optimization (QUBO) problem specifications.</p>
+<p>This class extends the <cite>SpecBuilder</cite> base class and sets the <cite>problem_type</cite> option to “QUBO”.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.root_node_only" title="quantagonia.spec_builder.QUBOSpecBuilder.root_node_only"><code class="xref py py-obj docutils literal notranslate"><span class="pre">root_node_only</span></code></a>()</p></td>
+<td><p>Limit the number of branch and bound nodes to be explored.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_absolute_gap" title="quantagonia.spec_builder.QUBOSpecBuilder.set_absolute_gap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_absolute_gap</span></code></a>(abs_gap)</p></td>
+<td><p>Set the absolute gap for termination.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_decomposition" title="quantagonia.spec_builder.QUBOSpecBuilder.set_decomposition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_decomposition</span></code></a>(decomposition)</p></td>
+<td><p>Enable or disable decomposition of the QUBO matrix.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_enumeration" title="quantagonia.spec_builder.QUBOSpecBuilder.set_enumeration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_enumeration</span></code></a>(enumeration)</p></td>
+<td><p>Enable or disable enumeration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_max_num_nodes" title="quantagonia.spec_builder.QUBOSpecBuilder.set_max_num_nodes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_max_num_nodes</span></code></a>(max_num_nodes)</p></td>
+<td><p>Limit the number of branch and bound nodes to be explored.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_node_presolve" title="quantagonia.spec_builder.QUBOSpecBuilder.set_node_presolve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_node_presolve</span></code></a>(node_presolve)</p></td>
+<td><p>Enable or disable node presolve.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_objective_cutoff" title="quantagonia.spec_builder.QUBOSpecBuilder.set_objective_cutoff"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_objective_cutoff</span></code></a>(cutoff_value)</p></td>
+<td><p>Set a cutoff value for the objective.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_presolve" title="quantagonia.spec_builder.QUBOSpecBuilder.set_presolve"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_presolve</span></code></a>(presolve)</p></td>
+<td><p>Enable or disable presolve.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_relative_gap" title="quantagonia.spec_builder.QUBOSpecBuilder.set_relative_gap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_relative_gap</span></code></a>(rel_gap)</p></td>
+<td><p>Set the relative gap for termination.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.QUBOSpecBuilder.root_node_only">
+<span class="sig-name descname"><span class="pre">root_node_only</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.spec_builder.QUBOSpecBuilder.root_node_only" title="Permalink to this definition"></a></dt>
+<dd><p>Limit the number of branch and bound nodes to be explored.</p>
+<p>Setting this number to 1 only solves the root node.
+This mimicks the behavior of ordinary (quantum) annealers which “only” return a solution without any quality assessment or proof of global optimality.
+When comparing to other quantum annealers, make sure to limit the number of nodes to 1.If the solution process is stopped after the maximum number of nodes is reached, our solver still returns an optimality gap which tells you how far away the true optimal solution potentially is.
+This is not the case with other ordinary (quantum) annealers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num_nodes</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">set_max_num_nodes</span><span class="p">(</span><span class="n">num_nodes</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.QUBOSpecBuilder.set_absolute_gap">
+<span class="sig-name descname"><span class="pre">set_absolute_gap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">abs_gap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_absolute_gap" title="Permalink to this definition"></a></dt>
+<dd><p>Set the absolute gap for termination.</p>
+<p>Normally the solver terminates once the absolute gap reaches a default tolerance of 1e-9.
+The absolute gap is the difference between the objective value <span class="math notranslate nohighlight">\(f∗\)</span> of the best solution found and the best bound <span class="math notranslate nohighlight">\(fˉ​\)</span> on the objective value.
+Hence, the absolute gap tells you how much more the objective value could potentially increase if you continue the search.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>abs_gap</strong> (<em>float</em>) – A float representing the absolute gap for termination.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <code class="code docutils literal notranslate"><span class="pre">abs_gap</span></code> is not a float or integer.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">abs_gap</span> <span class="o">=</span> <span class="mf">1e-6</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">set_absolute_gap</span><span class="p">(</span><span class="n">abs_gap</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.QUBOSpecBuilder.set_decomposition">
+<span class="sig-name descname"><span class="pre">set_decomposition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">decomposition</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="k"><span class="pre">True</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_decomposition" title="Permalink to this definition"></a></dt>
+<dd><p>Enable or disable decomposition of the QUBO matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>decomposition</strong> (<em>bool</em>) – A boolean indicating whether to enable or disable decomposition of the QUBO matrix. The default value is True.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <code class="code docutils literal notranslate"><span class="pre">decomposition</span></code> is not a boolean.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.QUBOSpecBuilder.set_enumeration">
+<span class="sig-name descname"><span class="pre">set_enumeration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enumeration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_enumeration" title="Permalink to this definition"></a></dt>
+<dd><p>Enable or disable enumeration.</p>
+<p>During the solution process, our solver solves many smaller sub-QUBOs.
+If these sub-QUBOs are small enough, we explicitly enumerate the solution space of the sub-QUBO, because this can be done extremely fast for small sub-QUBOs.
+This behavior may be turned off.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>enumeration</strong> (<em>bool</em>) – A boolean indicating whether to enable or disable enumeration.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <code class="code docutils literal notranslate"><span class="pre">enumeration</span></code> is not a boolean.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spec</span><span class="o">.</span><span class="n">set_enumeration</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.QUBOSpecBuilder.set_max_num_nodes">
+<span class="sig-name descname"><span class="pre">set_max_num_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_num_nodes</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_max_num_nodes" title="Permalink to this definition"></a></dt>
+<dd><p>Limit the number of branch and bound nodes to be explored.</p>
+<p>Setting this number to 1 only solves the root node.
+This mimicks the behavior of ordinary (quantum) annealers which “only” return a solution without any quality assessment or proof of global optimality.
+When comparing to other quantum annealers, make sure to limit the number of nodes to 1.
+If the solution process is stopped after the maximum number of nodes is reached, our solver still returns an optimality gap which tells you how far away the true optimal solution potentially is.
+This is not the case with other ordinary (quantum) annealers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>max_num_nodes</strong> (<em>int</em>) – An integer representing the maximum number of branch-and-bound nodes allowed. Should be greater than or equal to 1.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num_nodes</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">set_max_num_nodes</span><span class="p">(</span><span class="n">num_nodes</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.QUBOSpecBuilder.set_node_presolve">
+<span class="sig-name descname"><span class="pre">set_node_presolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node_presolve</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_node_presolve" title="Permalink to this definition"></a></dt>
+<dd><p>Enable or disable node presolve.</p>
+<p>Similar to the presolve on the full QUBO problem, our solver also performs some presolve routines for each sub-QUBO derived during the solution process.
+This behavior can be turned off.
+:param node_presolve: A boolean indicating whether to enable or disable node presolve.
+:type node_presolve: bool</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If <code class="code docutils literal notranslate"><span class="pre">node_presolve</span></code> is not a boolean.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spec</span><span class="o">.</span><span class="n">set_node_presolve</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.QUBOSpecBuilder.set_objective_cutoff">
+<span class="sig-name descname"><span class="pre">set_objective_cutoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cutoff_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_objective_cutoff" title="Permalink to this definition"></a></dt>
+<dd><p>Set a cutoff value for the objective.
+If incumbent reaches cutoff value, the solver terminates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cutoff_value</strong> (<em>float</em>) – A float representing the cutoff value for the objective.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <code class="code docutils literal notranslate"><span class="pre">cutoff_value</span></code> is not a float or integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.QUBOSpecBuilder.set_presolve">
+<span class="sig-name descname"><span class="pre">set_presolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">presolve</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_presolve" title="Permalink to this definition"></a></dt>
+<dd><p>Enable or disable presolve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>presolve</strong> (<em>bool</em>) – A boolean indicating whether to enable or disable presolve.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <code class="code docutils literal notranslate"><span class="pre">presolve</span></code> is not a boolean.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">spec</span><span class="o">.</span><span class="n">set_presolve</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.spec_builder.QUBOSpecBuilder.set_relative_gap">
+<span class="sig-name descname"><span class="pre">set_relative_gap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rel_gap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.spec_builder.QUBOSpecBuilder.set_relative_gap" title="Permalink to this definition"></a></dt>
+<dd><p>Set the relative gap for termination.</p>
+<p>The solver terminates once the relative gap reaches the default tolerance of 0.01% or 1e-4.
+The relative gap is defined as <span class="math notranslate nohighlight">\(|f^\ast - \bar{f}|\, /\,  |f^\ast|\)</span>,
+i.e., it is the improvement potential relative to the best-known objective value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rel_gap</strong> (<em>float</em>) – A float representing the relative gap for termination.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <code class="code docutils literal notranslate"><span class="pre">rel_gap</span></code> is not a float or integer.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rel_gap</span> <span class="o">=</span> <span class="mf">1e-2</span>
+<span class="n">spec</span><span class="o">.</span><span class="n">set_relative_gap</span><span class="p">(</span><span class="n">rel_gap</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.enums.HybridSolverOptSenses">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.enums.</span></span><span class="sig-name descname"><span class="pre">HybridSolverOptSenses</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.enums.HybridSolverOptSenses" title="Permalink to this definition"></a></dt>
+<dd><p>An enumeration class representing the optimization senses for the hybrid solver.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantagonia.enums.HybridSolverOptSenses.MAXIMIZE">
+<span class="sig-name descname"><span class="pre">MAXIMIZE</span></span><a class="headerlink" href="#quantagonia.enums.HybridSolverOptSenses.MAXIMIZE" title="Permalink to this definition"></a></dt>
+<dd><p>Holds a string representing maximization.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantagonia.enums.HybridSolverOptSenses.MINIMIZE">
+<span class="sig-name descname"><span class="pre">MINIMIZE</span></span><a class="headerlink" href="#quantagonia.enums.HybridSolverOptSenses.MINIMIZE" title="Permalink to this definition"></a></dt>
+<dd><p>Holds a string representing minimization.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="adapters-for-d-wave-pyqubo-qiskit">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Adapters for D-Wave, PyQUBO, Qiskit</a><a class="headerlink" href="#adapters-for-d-wave-pyqubo-qiskit" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-quantagonia.qubo.adapters"></span><dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.qubo.adapters.DWaveBQMAdapter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.qubo.adapters.</span></span><span class="sig-name descname"><span class="pre">DWaveBQMAdapter</span></span><a class="headerlink" href="#quantagonia.qubo.adapters.DWaveBQMAdapter" title="Permalink to this definition"></a></dt>
+<dd><p>Adapter for converting a D-Wave <code class="xref py py-class docutils literal notranslate"><span class="pre">dimod.BinaryQuadraticModel</span></code> (BQM) to a Quantagonia <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>D-Wave only allows minimization, so we also set the sense to minimization in the QUBOs obtained from the conversion process.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.adapters.DWaveBQMAdapter.convert">
+<span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bqm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BinaryQuadraticModel</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><span class="pre">QuboModel</span></a></span></span><a class="headerlink" href="#quantagonia.qubo.adapters.DWaveBQMAdapter.convert" title="Permalink to this definition"></a></dt>
+<dd><p>Converts a D-Wave BQM to a <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>bqm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dimod.BinaryQuadraticModel</span></code>) – The <code class="xref py py-class docutils literal notranslate"><span class="pre">dimod.BinaryQuadraticModel</span></code> to be converted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The resulting <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel">QuboModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.qubo.adapters.DWaveCQMAdapter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.qubo.adapters.</span></span><span class="sig-name descname"><span class="pre">DWaveCQMAdapter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">penalty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.adapters.DWaveCQMAdapter" title="Permalink to this definition"></a></dt>
+<dd><p>Adapts a D-Wave <code class="xref py py-class docutils literal notranslate"><span class="pre">dimod.ConstrainedQuadraticModel</span></code> to a Quantagonia <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>penalty</strong> (<em>float</em>) – The penalty parameter to use for the QUBO conversion.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>D-Wave only allows minimization, so we also set the sense to minimization in the QUBOs obtained from the conversion process.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.adapters.DWaveCQMAdapter.checkCQMSupported">
+<span class="sig-name descname"><span class="pre">checkCQMSupported</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cqm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConstrainedQuadraticModel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.adapters.DWaveCQMAdapter.checkCQMSupported" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if the input CQM is supported by the converter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cqm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dimod.ConstrainedQuadraticModel</span></code>) – The CQM to be checked.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Exception</strong> – If the CQM has unsupported variables or constraints.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.adapters.DWaveCQMAdapter.convert">
+<span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cqm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConstrainedQuadraticModel</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><span class="pre">QuboModel</span></a></span></span><a class="headerlink" href="#quantagonia.qubo.adapters.DWaveCQMAdapter.convert" title="Permalink to this definition"></a></dt>
+<dd><p>Converts a D-Wave CQM to a <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cqm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dimod.ConstrainedQuadraticModel</span></code>) – A <code class="xref py py-class docutils literal notranslate"><span class="pre">dimod.ConstrainedQuadraticModel</span></code> to be converted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The resulting <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel">QuboModel</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the variables are non-binary or the constraints are non-linear.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.adapters.DWaveCQMAdapter.convertLinearConstraints">
+<span class="sig-name descname"><span class="pre">convertLinearConstraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cqm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConstrainedQuadraticModel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.adapters.DWaveCQMAdapter.convertLinearConstraints" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the linear constraints of a CQM into a QuboModel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cqm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dimod.ConstrainedQuadraticModel</span></code>) – The CQM to be converted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code> representing the linear constraints of the CQM.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the variables of the CQM are non-binary or the constraints are not linear.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.adapters.DWaveCQMAdapter.convertObjective">
+<span class="sig-name descname"><span class="pre">convertObjective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cqm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ConstrainedQuadraticModel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><span class="pre">QuboModel</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.adapters.DWaveCQMAdapter.convertObjective" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code> from the objective function of a CQM.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cqm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dimod.ConstrainedQuadraticModel</span></code>) – A CQM containing the objective function.</p></li>
+<li><p><strong>qubo</strong> (<a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><em>QuboModel</em></a>) – A <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code> to add the objective function to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The QuboModel obtained by adding the converted objective function of the given CQM.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel">QuboModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.qubo.adapters.QiskitQPAdapter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.qubo.adapters.</span></span><span class="sig-name descname"><span class="pre">QiskitQPAdapter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">penalty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.adapters.QiskitQPAdapter" title="Permalink to this definition"></a></dt>
+<dd><p>Adapter to convert an IBM / Qiskit <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code> into a Quantagonia <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code>.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.adapters.QiskitQPAdapter.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">penalty</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.adapters.QiskitQPAdapter.__init__" title="Permalink to this definition"></a></dt>
+<dd><p>Initializes a new instance of the <a class="reference internal" href="#quantagonia.qubo.adapters.QiskitQPAdapter" title="quantagonia.qubo.adapters.QiskitQPAdapter"><code class="xref py py-class docutils literal notranslate"><span class="pre">QiskitQPAdapter</span></code></a> class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>penalty</strong> (<em>float</em>) – The penalty as float, to use when converting linear constraints to QUBO. Defaults to 1e3.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.adapters.QiskitQPAdapter.checkQPSupported">
+<span class="sig-name descname"><span class="pre">checkQPSupported</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QuadraticProgram</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.adapters.QiskitQPAdapter.checkQPSupported" title="Permalink to this definition"></a></dt>
+<dd><p>Checks if the <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code> is supported by the converter. Allowed are binary variables and linear constraints.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>qp</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code>) – The <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code> to check.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code> contains non-binary variables, or non-linear constraints.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.adapters.QiskitQPAdapter.convert">
+<span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QuadraticProgram</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><span class="pre">QuboModel</span></a></span></span><a class="headerlink" href="#quantagonia.qubo.adapters.QiskitQPAdapter.convert" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the given <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code> to a <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>qp</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code>) – The <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code> to convert.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The converted QUBO as <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel">QuboModel</a></p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Exception</strong> – If the <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code> contains non-binary variables, or non-linear constraints.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.adapters.QiskitQPAdapter.convertLinearConstraints">
+<span class="sig-name descname"><span class="pre">convertLinearConstraints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QuadraticProgram</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.adapters.QiskitQPAdapter.convertLinearConstraints" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the linear constraints of the given Qiskit <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code> to a QUBO problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>qp</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code>) – The Qiskit QuadraticProgram to convert.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code> that corresponds to the given <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel">QuboModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.adapters.QiskitQPAdapter.convertObjective">
+<span class="sig-name descname"><span class="pre">convertObjective</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QuadraticProgram</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qubo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><span class="pre">QuboModel</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.adapters.QiskitQPAdapter.convertObjective" title="Permalink to this definition"></a></dt>
+<dd><p>Converts the objective function of the given Qiskit <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code> to a <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>qp</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code>) – The <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code> to convert.</p></li>
+<li><p><strong>qubo</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code>) – The <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code> to convert the objective function to.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code> with the objective function corresponding to the <code class="xref py py-class docutils literal notranslate"><span class="pre">qiskit_optimization.QuadraticProgram</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel">QuboModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.qubo.adapters.PyQUBOAdapter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.qubo.adapters.</span></span><span class="sig-name descname"><span class="pre">PyQUBOAdapter</span></span><a class="headerlink" href="#quantagonia.qubo.adapters.PyQUBOAdapter" title="Permalink to this definition"></a></dt>
+<dd><p>A class that adapts a PyQUBO quadratic model to a Quantagonia <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code>.
+Note that pyqubo does not contain the sense explicitly, but always assumes minimization, so we also set the sense to minimization in the QUBOs obtained from the conversion process.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.adapters.PyQUBOAdapter.convert">
+<span class="sig-name descname"><span class="pre">convert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pqm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constants</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><span class="pre">QuboModel</span></a></span></span><a class="headerlink" href="#quantagonia.qubo.adapters.PyQUBOAdapter.convert" title="Permalink to this definition"></a></dt>
+<dd><p>Converts a PyQUBO quadratic model to a <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code> that can be solved by Quantagonia solvers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pqm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">pyqubo.Model</span></code>) – A <code class="xref py py-class docutils literal notranslate"><span class="pre">pyqubo.Model</span></code> to be converted.</p></li>
+<li><p><strong>constants</strong> (<em>dict</em>) – A dictionary of constant values that can be used in the conversion.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The resulting <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel">QuboModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="ip-solver-and-conversion">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">IP Solver and Conversion</a><a class="headerlink" href="#ip-solver-and-conversion" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.pulp.qpulp_adapter.QPuLPAdapter">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.pulp.qpulp_adapter.</span></span><span class="sig-name descname"><span class="pre">QPuLPAdapter</span></span><a class="headerlink" href="#quantagonia.pulp.qpulp_adapter.QPuLPAdapter" title="Permalink to this definition"></a></dt>
+<dd><p>This class provides an adapter for solving optimization problems created using the PuLP modeling language as MIP.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.pulp.qpulp_adapter.QPuLPAdapter.getSolver">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">getSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HybridSolverConnectionType</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HybridSolverServers</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">HybridSolverServers.PROD</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">spec_dict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keep_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.pulp.qpulp_adapter.QPuLPAdapter.getSolver" title="Permalink to this definition"></a></dt>
+<dd><p>Returns a solver object for problem instances created with Pulp.</p>
+<p>The solver can submit a problem to the cloud and solved as MIP.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>connection</strong> – Connection type. It is recommended to use <cite>HybridSolverConnectionType.CLOUD</cite>.</p></li>
+<li><p><strong>api_key</strong> (<em>optional</em>) – The Quantagonia API key used for the connection. Defaults to None.</p></li>
+<li><p><strong>server</strong> (<em>optional</em>) – The server used for the connection. It is recommended to use the default value: <cite>HybridSolverServers.PROD</cite>.</p></li>
+<li><p><strong>spec_dict</strong> (<em>optional</em>) – A solver specifications dictionary. Defaults to None.</p></li>
+<li><p><strong>keep_files</strong> (<em>optional</em>) – Whether to keep the generated input and output files. Defaults to False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A solver instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.IP2Qubo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.qubo.ip2qubo.</span></span><span class="sig-name descname"><span class="pre">IP2Qubo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sense</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">HybridSolverOptSenses.MINIMIZE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaleEqualityConstraints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaleObjective</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.IP2Qubo" title="Permalink to this definition"></a></dt>
+<dd><p>Converts an IP problem to a QUBO problem.
+Supported MIP formats: PulP MIP format, intermediate MIP format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sense</strong> (<em>int</em>) – The optimization sense. Defaults to <cite>HybridSolverOptSenses.MINIMIZE</cite>.</p></li>
+<li><p><strong>verbose</strong> (<em>bool</em>) – Whether to print additional output during conversion. Defaults to <cite>False</cite>.</p></li>
+<li><p><strong>scaleEqualityConstraints</strong> (<em>bool</em>) – Whether to scale equality constraints during conversion. Defaults to <cite>False</cite>.</p></li>
+<li><p><strong>scaleObjective</strong> (<em>bool</em>) – Whether to scale the objective function during conversion. Defaults to <cite>False</cite>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.IP2Qubo.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.IP2Qubo.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>Whether to print additional output during conversion.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.IP2Qubo.vars">
+<span class="sig-name descname"><span class="pre">vars</span></span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.IP2Qubo.vars" title="Permalink to this definition"></a></dt>
+<dd><p>A dictionary of QUBO variables in pairs of variable name and <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboVariable</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, QuboVariable]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.IP2Qubo.objective">
+<span class="sig-name descname"><span class="pre">objective</span></span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.IP2Qubo.objective" title="Permalink to this definition"></a></dt>
+<dd><p>A QuboExpression for objective function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QuboExpression</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.IP2Qubo.constraints">
+<span class="sig-name descname"><span class="pre">constraints</span></span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.IP2Qubo.constraints" title="Permalink to this definition"></a></dt>
+<dd><p>A dictionary of QUBO constraints, containing pairs of constraint names and <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboExpression</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, QuboExpression]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.IP2Qubo.sense">
+<span class="sig-name descname"><span class="pre">sense</span></span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.IP2Qubo.sense" title="Permalink to this definition"></a></dt>
+<dd><p>An enum representing the optimization sense of the QUBO. Default is <code class="code docutils literal notranslate"><span class="pre">HybridSolverOptSenses.MINIMIZE</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#quantagonia.enums.HybridSolverOptSenses" title="quantagonia.enums.HybridSolverOptSenses">HybridSolverOptSenses</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.IP2Qubo.fromIP">
+<span class="sig-name descname"><span class="pre">fromIP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mip_format</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">MIPSourceFormat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.IP2Qubo.fromIP" title="Permalink to this definition"></a></dt>
+<dd><p>Imports an IP problem into the class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ip</strong> (<em>dict</em>) – A dictionary containing an IP problem.</p></li>
+<li><p><strong>mip_format</strong> (<em>MIPSourceFormat</em>) – The format of the IP problem.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.IP2Qubo.toQUBO">
+<span class="sig-name descname"><span class="pre">toQUBO</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">penalty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.IP2Qubo.toQUBO" title="Permalink to this definition"></a></dt>
+<dd><p>Transforms the current QUBO instance to a weighted QUBO instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>penalty</strong> (<em>Union</em><em>[</em><em>float</em><em>, </em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>]</em><em>]</em>) – Penalty factors as float that adjust the weight of each constraint.
+A single float is accepted to be applied to all constraints.
+Alternatively a dictionary of pairs of constraint name and respective penalty factor is accepted as well to apply individual penalty factors to constraints.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A weighted QUBO.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel">QuboModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.IPviaQUBOSolver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.qubo.ip2qubo.</span></span><span class="sig-name descname"><span class="pre">IPviaQUBOSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.IPviaQUBOSolver" title="Permalink to this definition"></a></dt>
+<dd><p>Abstract base class for solving IP problems using the QUBO solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>verbose</strong> (<em>bool</em>) – If True, prints additional information about the solver. Default is False.</p>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.IPviaQUBOSolver.ip2qubo">
+<span class="sig-name descname"><span class="pre">ip2qubo</span></span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.IPviaQUBOSolver.ip2qubo" title="Permalink to this definition"></a></dt>
+<dd><p>An instance of the <a class="reference internal" href="#quantagonia.qubo.ip2qubo.IP2Qubo" title="quantagonia.qubo.ip2qubo.IP2Qubo"><code class="xref py py-class docutils literal notranslate"><span class="pre">IP2Qubo</span></code></a> class, which converts an IP problem to a QUBO problem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#quantagonia.qubo.ip2qubo.IP2Qubo" title="quantagonia.qubo.ip2qubo.IP2Qubo">IP2Qubo</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.IPviaQUBOSolver.verbose">
+<span class="sig-name descname"><span class="pre">verbose</span></span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.IPviaQUBOSolver.verbose" title="Permalink to this definition"></a></dt>
+<dd><p>If True, prints additional information about the solver. Default is False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.IPviaQUBOSolver.iter">
+<span class="sig-name descname"><span class="pre">iter</span></span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.IPviaQUBOSolver.iter" title="Permalink to this definition"></a></dt>
+<dd><p>Integer stating the current number of iterations in the solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.IPviaQUBOSolver.reportSolution">
+<span class="sig-name descname"><span class="pre">reportSolution</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.IPviaQUBOSolver.reportSolution" title="Permalink to this definition"></a></dt>
+<dd><p>Prints information about the current solution.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.IPviaQUBOSolver.solveIP">
+<span class="sig-name descname"><span class="pre">solveIP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ip</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.IPviaQUBOSolver.solveIP" title="Permalink to this definition"></a></dt>
+<dd><p>Solves an IP problem using the current solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ip</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">pulp.LpProblem</span></code>) – A PulP LpProblem instance to solve.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Solved IP or None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.AutomaticPenaltyScalingIPviaQUBOSolver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.qubo.ip2qubo.</span></span><span class="sig-name descname"><span class="pre">AutomaticPenaltyScalingIPviaQUBOSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_penalty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hsolver_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">HybridSolverConnectionType.CLOUD</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_iters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.AutomaticPenaltyScalingIPviaQUBOSolver" title="Permalink to this definition"></a></dt>
+<dd><p>A subclass of <a class="reference internal" href="#quantagonia.qubo.ip2qubo.IPviaQUBOSolver" title="quantagonia.qubo.ip2qubo.IPviaQUBOSolver"><code class="xref py py-class docutils literal notranslate"><span class="pre">IPviaQUBOSolver</span></code></a> that automatically scales penalty terms
+during the optimization process to find feasible solutions for IP problems.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verbose</strong> (<em>bool</em>) – If True, prints additional information about the optimization process.
+Default is False.</p></li>
+<li><p><strong>initial_penalty</strong> (<em>Union</em><em>[</em><em>float</em><em>, </em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>]</em><em>]</em>) – Penalty factors as float that adjust the weight of each constraint.
+A single float is accepted to be applied to all constraints.
+Alternatively a dictionary of pairs of constraint name and respective penalty factor is accepted as well to apply individual penalty factors to constraints.
+Default is 1.0.</p></li>
+<li><p><strong>hsolver_type</strong> (<em>HybridSolverConnectionType</em>) – The type of hybrid solver to use.
+Default and recommended is HybridSolverConnectionType.CLOUD.</p></li>
+<li><p><strong>api_key</strong> (<em>str</em>) – The API key for accessing the solver.
+Default is None.</p></li>
+<li><p><strong>max_iters</strong> (<em>int</em>) – The maximum number of iterations for the optimization process.
+Default is 100.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.AutomaticPenaltyScalingIPviaQUBOSolver.initial_penalty">
+<span class="sig-name descname"><span class="pre">initial_penalty</span></span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.AutomaticPenaltyScalingIPviaQUBOSolver.initial_penalty" title="Permalink to this definition"></a></dt>
+<dd><p>The initial value(s) for the penalty terms.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Union[float, Dict[str, float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.AutomaticPenaltyScalingIPviaQUBOSolver.hsolver_type">
+<span class="sig-name descname"><span class="pre">hsolver_type</span></span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.AutomaticPenaltyScalingIPviaQUBOSolver.hsolver_type" title="Permalink to this definition"></a></dt>
+<dd><p>The type of hybrid solver to use.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>HybridSolverConnectionType</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.AutomaticPenaltyScalingIPviaQUBOSolver.api_key">
+<span class="sig-name descname"><span class="pre">api_key</span></span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.AutomaticPenaltyScalingIPviaQUBOSolver.api_key" title="Permalink to this definition"></a></dt>
+<dd><p>The API key for accessing the hybrid solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.qubo.ip2qubo.OneShotIPviaQUBOSolver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.qubo.ip2qubo.</span></span><span class="sig-name descname"><span class="pre">OneShotIPviaQUBOSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">penalty</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hsolver_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">HybridSolverConnectionType.CLOUD</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.ip2qubo.OneShotIPviaQUBOSolver" title="Permalink to this definition"></a></dt>
+<dd><p>A class that solves an integer programming problem in one shot using a QUBO solver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>verbose</strong> (<em>bool</em>) – Whether to print verbose output. Defaults to False.</p></li>
+<li><p><strong>penalty</strong> (<em>Union</em><em>[</em><em>float</em><em>, </em><em>Dict</em><em>[</em><em>str</em><em>, </em><em>float</em><em>]</em><em>]</em>) – Penalty factors as float that adjust the weight of each constraint.
+A single float is accepted to be applied to all constraints.
+Alternatively a dictionary of pairs of constraint name and respective penalty factor is accepted as well to apply individual penalty factors to constraints.</p></li>
+<li><p><strong>hsolver_type</strong> (<em>HybridSolverConnectionType</em>) – The type of Hybrid Solver to use for solving the QUBO. Defaults to
+HybridSolverConnectionType.CLOUD.</p></li>
+<li><p><strong>api_key</strong> (<em>str</em>) – The API key to use for connecting to the Hybrid Solver. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorials/converter.html" class="btn btn-neutral float-left" title="Converting from Ocean and Qiskit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="qubo_format.html" class="btn btn-neutral float-right" title="Quantagonia QUBO File Format" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Quantagonia GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
