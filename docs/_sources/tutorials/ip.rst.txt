@@ -1,0 +1,52 @@
+=====================
+Solving IPs as QUBO
+=====================
+
+It is possible to automatically convert classic optimization problems modeled with PuLP into a QUBO in case the problem instance only has integer variables and no continuous variables (i.e., if the problem is an IP and not an MIP).
+The instance can then be solved as a QUBO and the QUBO solution will be automatically converted back into the original IP solution space.
+
+This feature allows to solve IP instances with our hybrid quantum-classic QUBO solver.
+
+The conversion process is explained in detail in chapter 5 of `Quantum Bridge Analytics I: a tutorial on formulating
+and using QUBO models <https://sci-hub.hkvisa.net/10.1007/s10288-019-00424-y>`_ [#f1]_ and alternatively in the lecture `Quantum Integer
+Programming <https://bernalde.github.io/QuIP/slides/47-779%20Lecture%205%20-%20Quadratic%20Unconstrained%20Binary%20Optimization%20(QUBO).pdf>`_ [#f2]_.
+
+We will again use the knapsack example and model it with PulP:
+
+.. literalinclude:: ../examples/ip2qubo_knapsack.py
+    :lines: 1-6, 9-25
+
+There are two solvers that convert an IP and then solve as a QUBO problem, the :class:`AutomaticPenaltyScalingIPviaQUBOSolver` and the :class:`OneShotIPviaQUBOSolver`.
+
+Penalty scaling is used to adjust the weights of the QUBO`s constraints to enforce them.
+
+Use either :class:`AutomaticPenaltyScalingIPviaQUBOSolver`
+
+.. literalinclude:: ../examples/ip2qubo_knapsack.py
+    :lines: 49-52
+
+to automatically scale the penalties with each iteration (`shot`) of the solution process.
+The number of shots is set via the optional argument :code:`max_iters` which defaults to 100.
+It is possible to give initial penalties as float (to be applied to all) or dictionary (individual penalties) with :code:`initial_penalty`.
+This approach sequentially submits a number of instances with different penalty to the cloud.
+With each shot the penalties are inflated if constraints are not met and decreased slightly if they are.
+The result is returned once all constraints are met or the maximum number of shots is reached.
+
+Or use :class:`OneShotIPviaQUBOSolver`:
+
+.. literalinclude:: ../examples/ip2qubo_subset_sum.py
+    :lines: 46-48
+
+This class takes a single shot and it is possible to specify the penalties via the optional argument :code:`penalty`.
+This way own metrics or a try-and-error approach can be implemented for the penalty scaling.
+
+Then start the process and read out the solution from the :class:`LpProblem`:
+
+.. literalinclude:: ../examples/ip2qubo_subset_sum.py
+    :lines: 49-58
+
+
+.. rubric:: Footnotes
+
+.. [#f1] Glover, Fred; Kochenberger, Gary; Du, Yu  (2019). Quantum Bridge Analytics I: a tutorial on formulating and using QUBO models. 4OR, 17(4), 335–371. doi:10.1007/s10288-019-00424-y
+.. [#f2] Tayur, Sridhar; Venturelli, Davide; Bernal,  David (2020). Quantum Integer Programming. 47-779 Quadratic Unconstrained Binary Optimization (QUBO). Carnegie Mellon University, Pittsburgh, Pennsylvania, USA.
