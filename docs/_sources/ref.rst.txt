@@ -1,0 +1,101 @@
+=============
+API Reference
+=============
+
+.. contents:: Table of Contents
+    :depth: 3
+
+
+.. this cuts the "quantagononia." from the classes and submodules in the ToC sidebar
+
+.. py:currentmodule:: quantagonia
+
+Modeling QUBOs
+========================
+
+.. autoclass:: quantagonia.qubo.model.QuboModel
+    :members:
+    :exclude-members: addSOS1, addSOS2
+    :autosummary:
+    :autosummary-sections: Methods
+
+
+Solving
+========
+
+.. autoclass:: quantagonia.cloud.cloud_runner.CloudRunner
+    :members:
+    :autosummary:
+
+.. _spec_builder_label:
+
+Solver Options
+===============
+
+When submitting a problem instance the solver it is sent alongside a file containing a set of solver options (specs) that specify various solver parameters.
+The :class:`MIPSpecBuilder` and :class:`QUBOSpecBuilder` classes facilitate this process by returning an object that holds the default options
+while also providing functions to modify them as needed.
+
+These are the default solver specs as JSON file:
+
+.. literalinclude:: ../../quantagonia/default_spec.json
+
+.. py:currentmodule:: quantagonia.spec_builder
+
+.. autoclass:: SpecBuilder
+    :members:
+    :autosummary:
+        :methods:
+
+.. autoclass:: MIPSpecBuilder
+    :members:
+    :autosummary:
+        :methods:
+
+.. autoclass:: QUBOSpecBuilder
+    :members:
+    :autosummary:
+        :methods:
+
+.. autoclass:: quantagonia.enums.HybridSolverOptSenses
+    :members:
+
+
+Adapters for D-Wave, PyQUBO, Qiskit
+=============================================
+
+.. toctree::
+    :maxdepth: 1
+    :caption: Contents:
+    :glob:
+
+
+.. automodule:: quantagonia.qubo.adapters
+    :members:
+    :exclude-members: QiskitQPAdapter, PyQUBOAdapter
+
+.. autoclass:: quantagonia.qubo.adapters.QiskitQPAdapter
+    :members:
+    :special-members: __init__
+
+.. autoclass:: quantagonia.qubo.adapters.PyQUBOAdapter
+    :members:
+
+IP Solver and Conversion
+=========================
+
+.. autoclass:: quantagonia.pulp.qpulp_adapter.QPuLPAdapter
+    :members:
+
+.. autoclass:: quantagonia.qubo.ip2qubo.IP2Qubo
+    :members:
+
+.. autoclass:: quantagonia.qubo.ip2qubo.IPviaQUBOSolver
+    :members:
+
+.. autoclass:: quantagonia.qubo.ip2qubo.AutomaticPenaltyScalingIPviaQUBOSolver
+    :members:
+
+.. autoclass:: quantagonia.qubo.ip2qubo.OneShotIPviaQUBOSolver
+    :members:
+
