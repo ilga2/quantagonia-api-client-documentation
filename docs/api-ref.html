@@ -1,0 +1,1204 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>API Reference &#8212; HybridSolver - documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=d2b2b47f" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="_static/documentation_options.js?v=b1628c55"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api-ref';</script>
+    <link rel="icon" href="_static/icon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Examples" href="examples.html" />
+    <link rel="prev" title="CLI Reference" href="cli-ref.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo_black.png" class="logo__image only-light" alt="HybridSolver - documentation - Home"/>
+    <script>document.write(`<img src="_static/logo_white.png" class="logo__image only-dark" alt="HybridSolver - documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="index.html">
+    HybridSolver
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="getting_started.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="cli-ref.html">
+    CLI Reference
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="examples.html">
+    API Examples
+  </a>
+</li>
+
+            <li class="nav-item dropdown pst-header-nav-item">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class="nav-item ">
+  <a class="nav-link dropdown-item nav-internal" href="qubo_format.html">
+    Quantagonia QUBO File Format
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/quantagonia-api-client/" title="PyPI Quantagonia API Client" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://seeklogo.com/images/P/python-package-index-logo-F2EC9F1F8C-seeklogo.com.png" class="icon-link-image" alt="PyPI Quantagonia API Client"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav class="navbar-nav">
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="index.html">
+    HybridSolver
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="getting_started.html">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="cli-ref.html">
+    CLI Reference
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="examples.html">
+    API Examples
+  </a>
+</li>
+
+
+<li class="nav-item pst-header-nav-item">
+  <a class="nav-link nav-internal" href="qubo_format.html">
+    Quantagonia QUBO File Format
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/quantagonia-api-client/" title="PyPI Quantagonia API Client" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://seeklogo.com/images/P/python-package-index-logo-F2EC9F1F8C-seeklogo.com.png" class="icon-link-image" alt="PyPI Quantagonia API Client"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">API Reference</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">#</a></h1>
+<p>In this section we describe relevant classes and methods of the <code class="code docutils literal notranslate"><span class="pre">quantagonia</span></code> package.</p>
+<section id="submitting-tasks">
+<h2>Submitting tasks<a class="headerlink" href="#submitting-tasks" title="Link to this heading">#</a></h2>
+<p>The heart of the package is a <code class="xref py py-class docutils literal notranslate"><span class="pre">HybridSolver</span></code> class to conveniently submit optimization tasks and batches of tasks.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.HybridSolver">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.</span></span><span class="sig-name descname"><span class="pre">HybridSolver</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">server</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HybridSolverServers</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">HybridSolverServers.PROD</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.HybridSolver" title="Link to this definition">#</a></dt>
+<dd><p>The main interface to solve and manage optimization tasks with the HybridSolver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>api_key</strong> (<em>str</em>) – The API key to be used to authenticate with the HybridSolver.</p></li>
+<li><p><strong>server</strong> (<em>HybridSolverServers</em>) – (optional) The server to use for the hybrid solver service. Defaults to <code class="code docutils literal notranslate"><span class="pre">HybridSolverServers.PROD</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.HybridSolver.cancel">
+<span class="sig-name descname"><span class="pre">cancel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.HybridSolver.cancel" title="Link to this definition">#</a></dt>
+<dd><p>Sends an interrupt signal to stop the execution of the specified job.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>jobid</strong> (<em>str</em>) – The id of the job to be canceled.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.HybridSolver.logs">
+<span class="sig-name descname"><span class="pre">logs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span></span></span><a class="headerlink" href="#quantagonia.HybridSolver.logs" title="Link to this definition">#</a></dt>
+<dd><p>Retrieves a list of logs for the given job.
+For batched jobs, the optional parameter ‘item’ selects the item of the batch.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>job_id</strong> (<em>str</em>) – The ID of the job to retrieve logs for.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of strings with the log for each item of the job.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.HybridSolver.progress">
+<span class="sig-name descname"><span class="pre">progress</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#quantagonia.HybridSolver.progress" title="Link to this definition">#</a></dt>
+<dd><p>Retrieves a list of progress information for each item of the given job.</p>
+<dl class="simple">
+<dt>The progress is a dictionary with keys for current</dt><dd><p>‘item_status’,
+‘bound’,
+‘objective’,
+‘abs_gap’,
+‘rel_gap’,
+‘solution’,
+‘status’,
+‘wall_time’,
+‘nodes’, and
+‘num_incumbents’.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>jobid</strong> (<em>str</em>) – The ID of the job to retrieve progress for.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list of dictionaries with progress for each item of the job.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.HybridSolver.solve">
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#quantagonia.HybridSolverParameters" title="quantagonia.parameters.HybridSolverParameters"><span class="pre">HybridSolverParameters</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">suppress_output</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#quantagonia.HybridSolver.solve" title="Link to this definition">#</a></dt>
+<dd><p>Solves the given input file(s) and prints the progress to the console.  Note that this is a blocking method.</p>
+<p>If you want to solve problems non-blocking or need finer control on what to do
+depending on the progress of the solve, use lower-level methods like <code class="code docutils literal notranslate"><span class="pre">submit()</span></code> and  <code class="code docutils literal notranslate"><span class="pre">progress()</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_files</strong> (<em>str</em><em> or </em><em>List</em><em>[</em><em>str</em><em>]</em>) – String or list of strings with path(st) to the input file(s).</p></li>
+<li><p><strong>params</strong> (<a class="reference internal" href="#quantagonia.HybridSolverParameters" title="quantagonia.HybridSolverParameters"><em>HybridSolverParameters</em></a><em> or </em><em>List</em><em>[</em><a class="reference internal" href="#quantagonia.HybridSolverParameters" title="quantagonia.HybridSolverParameters"><em>HybridSolverParameters</em></a><em>]</em>) – (optional) HybridSolverParameters</p></li>
+<li><p><strong>HybridSolverParameters.</strong> (<em>or list of</em>)</p></li>
+<li><p><strong>tag</strong> (<em>str</em>) – (optional) Attaches a tag to the compute job.</p></li>
+<li><p><strong>suppress_output</strong> (<em>bool</em>) – (optional) If true, all output is suppressed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>submit_callback</strong> – (optional) Custom callback function that is called when a job is submitted. Defaults to
+None.</p></li>
+<li><p><strong>new_incumbent_callback</strong> – (optional) A callback function to call if a new incumbent is found in the batch
+item. Defaults to None.</p></li>
+<li><p><strong>poll_frequency</strong> (<em>float</em>) – (optional) The frequency (as float, in seconds) at which the function should poll
+for job status. Defaults to 1.</p></li>
+<li><p><strong>timeout</strong> (<em>float</em>) – (optional) The maximum amount of time (as float, in seconds) to wait for the job to
+finish before timing out. Defaults to 14400.</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>A tuple for which the first item is a list and the second item is an integer.</dt><dd><p>The list consists of dictionaries containing results of the solve. The integer specifies
+the minutes billed for the job.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple(list, int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.HybridSolver.status">
+<span class="sig-name descname"><span class="pre">status</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">jobid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">JobStatus</span></span></span><a class="headerlink" href="#quantagonia.HybridSolver.status" title="Link to this definition">#</a></dt>
+<dd><p>Retrieves the status of the given job.
+The status is one of CREATED, RUNNING, FINISHED, TERMINATED, or TIMEOUT.</p>
+<p>Note that this only tells the processing status of the job,
+but nothing about the status of the items of the job.
+To give an example, a job is also considered finished, if all items exited with an error.
+Please use the <code class="code docutils literal notranslate"><span class="pre">progress</span></code> method to retrieve results for the job items.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>jobid</strong> (<em>str</em>) – The ID of the job.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The status of the job.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>JobStatus</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.HybridSolver.submit">
+<span class="sig-name descname"><span class="pre">submit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_files</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#quantagonia.HybridSolverParameters" title="quantagonia.parameters.HybridSolverParameters"><span class="pre">HybridSolverParameters</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#quantagonia.HybridSolverParameters" title="quantagonia.parameters.HybridSolverParameters"><span class="pre">HybridSolverParameters</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tag</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#quantagonia.HybridSolver.submit" title="Link to this definition">#</a></dt>
+<dd><p>Submits the given instance file(s) to the HybridSolver and returns the corresponding job id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_files</strong> (<em>str</em><em> or </em><em>List</em><em>[</em><em>str</em><em>]</em>) – String or list of strings with path(st) to the input file(s).</p></li>
+<li><p><strong>params</strong> (<a class="reference internal" href="#quantagonia.HybridSolverParameters" title="quantagonia.HybridSolverParameters"><em>HybridSolverParameters</em></a><em> or </em><em>List</em><em>[</em><a class="reference internal" href="#quantagonia.HybridSolverParameters" title="quantagonia.HybridSolverParameters"><em>HybridSolverParameters</em></a><em>]</em>) – (optional) HybridSolverParameters or</p></li>
+<li><p><strong>HybridSolverParameters.</strong> (<em>list of</em>)</p></li>
+<li><p><strong>tag</strong> (<em>str</em>) – (optional) Attaches a tag to the compute job.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Keyword Arguments<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>submit_callback</strong> – (optional) Custom callback function that is called when a job is submitted.
+Defaults to None.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The job id.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="solver-parameters">
+<h2>Solver Parameters<a class="headerlink" href="#solver-parameters" title="Link to this heading">#</a></h2>
+<p>You can parameterize the HybridSolver by passing a <code class="xref py py-class docutils literal notranslate"><span class="pre">HybridSolverParameters</span></code> object. Parameters are set through dedicated setter methods.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.HybridSolverParameters">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.</span></span><span class="sig-name descname"><span class="pre">HybridSolverParameters</span></span><a class="headerlink" href="#quantagonia.HybridSolverParameters" title="Link to this definition">#</a></dt>
+<dd><p>Class with setter options that allows to pass parameters to the solver.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.HybridSolverParameters.set_relative_gap">
+<span class="sig-name descname"><span class="pre">set_relative_gap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rel_gap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#quantagonia.HybridSolverParameters.set_relative_gap" title="Link to this definition">#</a></dt>
+<dd><p>Set the relative gap.</p>
+<p>The relative gap corresponds to the improvement potential of the objective value relative
+to the best-known objective value. It is defined as <span class="math notranslate nohighlight">\(|f^* - f^-| / |f^*|\)</span>, where  <span class="math notranslate nohighlight">\(f^*\)</span> is
+the best-known objective value and <span class="math notranslate nohighlight">\(f^-\)</span> is the best-known bound on the objective value.
+The solver terminates once the relative gap falls below the specified value for <code class="code docutils literal notranslate"><span class="pre">rel_gap</span></code>.
+The default value is set to 1e-4 (0.01%).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rel_gap</strong> (<em>float</em>) – A float representing the relative gap for termination.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <code class="code docutils literal notranslate"><span class="pre">rel_gap</span></code> is not a float or integer.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rel_gap</span> <span class="o">=</span> <span class="mf">1e-2</span>
+<span class="n">params</span><span class="o">.</span><span class="n">set_relative_gap</span><span class="p">(</span><span class="n">rel_gap</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.HybridSolverParameters.set_absolute_gap">
+<span class="sig-name descname"><span class="pre">set_absolute_gap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">abs_gap</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#quantagonia.HybridSolverParameters.set_absolute_gap" title="Link to this definition">#</a></dt>
+<dd><p>Set the absolute gap.</p>
+<p>The absolute gap is the difference between the objective value <span class="math notranslate nohighlight">\(f^*\)</span> of the best solution found
+and the best bound <span class="math notranslate nohighlight">\(f^-\)</span> on the objective value.
+Hence, the absolute gap tells by how much the objective value could potentially still be improved.
+The solver terminates if the absolute gap falls below the specified value for <code class="code docutils literal notranslate"><span class="pre">abs_gap</span></code>.
+The default value is set to 1e-9.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>abs_gap</strong> (<em>float</em>) – A float representing the absolute gap for termination.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <code class="code docutils literal notranslate"><span class="pre">abs_gap</span></code> is not a float or integer.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">abs_gap</span> <span class="o">=</span> <span class="mf">1e-6</span>
+<span class="n">params</span><span class="o">.</span><span class="n">set_absolute_gap</span><span class="p">(</span><span class="n">abs_gap</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.HybridSolverParameters.set_time_limit">
+<span class="sig-name descname"><span class="pre">set_time_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">time_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#quantagonia.HybridSolverParameters.set_time_limit" title="Link to this definition">#</a></dt>
+<dd><p>Sets time limit.</p>
+<p>The solver runs at most for ‘time_limit’ seconds and returns the best found solution along with the
+optimality gap. The optimality gap tells you by how much the solution could possibly be improved,
+if the solver continues to run.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time_limit</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># seconds</span>
+<span class="n">params</span><span class="o">.</span><span class="n">set_time_limit</span><span class="p">(</span><span class="n">time_limit</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.HybridSolverParameters.set_as_qubo">
+<span class="sig-name descname"><span class="pre">set_as_qubo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">as_qubo</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#quantagonia.HybridSolverParameters.set_as_qubo" title="Link to this definition">#</a></dt>
+<dd><p>Set the as_qubo option (MIP only)</p>
+<p>If true, the (M)IP is not only solved with MIP techniques but also
+solved as QUBO in parallel.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>as_qubo</strong> (<em>bool</em>) – A bool that enables or disables the as_qubo option.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <code class="code docutils literal notranslate"><span class="pre">as_qubo</span></code> is not a bool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.HybridSolverParameters.set_as_qubo_only">
+<span class="sig-name descname"><span class="pre">set_as_qubo_only</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">as_qubo_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#quantagonia.HybridSolverParameters.set_as_qubo_only" title="Link to this definition">#</a></dt>
+<dd><p>Set the as_qubo_only option (MIP only)</p>
+<p>If true, the (M)IP is not solved with MIP techniques but instead is transformed
+to a QUBO and solved as such.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>as_qubo_only</strong> (<em>bool</em>) – A bool that enables or disables the as_qubo_only option.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <code class="code docutils literal notranslate"><span class="pre">as_qubo_only</span></code> is not a bool.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.HybridSolverParameters.set_presolve">
+<span class="sig-name descname"><span class="pre">set_presolve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">presolve</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#quantagonia.HybridSolverParameters.set_presolve" title="Link to this definition">#</a></dt>
+<dd><p>Enable or disable presolve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>presolve</strong> (<em>bool</em>) – A boolean indicating whether to enable or disable presolve.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <code class="code docutils literal notranslate"><span class="pre">presolve</span></code> is not a boolean.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">params</span><span class="o">.</span><span class="n">set_presolve</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.HybridSolverParameters.set_seed">
+<span class="sig-name descname"><span class="pre">set_seed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#quantagonia.HybridSolverParameters.set_seed" title="Link to this definition">#</a></dt>
+<dd><p>Set the random number seed</p>
+<p>This acts as a small perturbation to some subroutines of the solver and may lead to different solution paths.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>seed</strong> (<em>float</em>) – The random number seed.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.HybridSolverParameters.set_heuristics_only">
+<span class="sig-name descname"><span class="pre">set_heuristics_only</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">heuristics_only</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#quantagonia.HybridSolverParameters.set_heuristics_only" title="Link to this definition">#</a></dt>
+<dd><p>Only apply the root node primal heuristics and then terminate (QUBO only)</p>
+<p>This waits until <em>all</em> primal heuristics are finished and displays a table with
+objective value and runtime per heuristic.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>heuristics_only</strong> (<em>bool</em>) – Flag to enable or disable heuristics_only mode.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.HybridSolverParameters.set_objective_limit">
+<span class="sig-name descname"><span class="pre">set_objective_limit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">objective_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#quantagonia.HybridSolverParameters.set_objective_limit" title="Link to this definition">#</a></dt>
+<dd><p>Sets a limit on the objective value to terminate optimization.</p>
+<p>The solver terminates as soon as it finds a feasible solution with an objective value at least as
+good as the specified <code class="code docutils literal notranslate"><span class="pre">objective_value</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>objective_value</strong> (<em>float</em>) – A float representing the termination value for the objective.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None.</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>ValueError</strong> – If <code class="code docutils literal notranslate"><span class="pre">objective_value</span></code> is not a float or integer.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="modeling-mips">
+<h2>Modeling MIPs<a class="headerlink" href="#modeling-mips" title="Link to this heading">#</a></h2>
+<p>The <code class="code docutils literal notranslate"><span class="pre">quantagonia</span></code> package contains a <code class="xref py py-class docutils literal notranslate"><span class="pre">HybridSolver_CMD</span></code> command, which can be passed to <a class="reference external" href="https://coin-or.github.io/pulp/index.html">PuLP</a>’s <code class="code docutils literal notranslate"><span class="pre">solve</span></code> method. This allows to model problems with PuLP and solve them with the HybridSolver. After the solve, you can access solution values directly from the PuLP model.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.mip.pulp_adapter.HybridSolver_CMD">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.mip.pulp_adapter.</span></span><span class="sig-name descname"><span class="pre">HybridSolver_CMD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keepFiles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">obfuscate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.mip.pulp_adapter.HybridSolver_CMD" title="Link to this definition">#</a></dt>
+<dd><p>The HybridSolver command to be passed to the <code class="code docutils literal notranslate"><span class="pre">solve</span></code> method of PuLP.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>api_key</strong> (<em>str</em>) – A string containing the API key.</p></li>
+<li><p><strong>params</strong> (<a class="reference internal" href="#quantagonia.HybridSolverParameters" title="quantagonia.HybridSolverParameters"><em>HybridSolverParameters</em></a>) – (optional) The parameters for the solver.</p></li>
+<li><p><strong>keepFiles</strong> (<em>bool</em>) – (optional) If True, files are saved in the current directory and not deleted after solving.</p></li>
+<li><p><strong>obfuscate</strong> (<em>bool</em>) – (optional) If True, constraints and variable names are obfuscated.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="modeling-qubos">
+<h2>Modeling QUBOs<a class="headerlink" href="#modeling-qubos" title="Link to this heading">#</a></h2>
+<p>The <code class="code docutils literal notranslate"><span class="pre">quantagonia</span></code> package comes with a <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code> class to model and solve QUBOs programmatically. Have a look at our <a class="reference internal" href="qubo_format.html#qubo-format"><span class="std std-ref">Quantagonia QUBO File Format</span></a> to learn more. You can also retrieve solution values of variables to process and use the optimal solution in your application.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">quantagonia.qubo.model.</span></span><span class="sig-name descname"><span class="pre">QuboModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sense</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">HybridSolverOptSenses</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">HybridSolverOptSenses.MAXIMIZE</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'pyclient'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel" title="Link to this definition">#</a></dt>
+<dd><p>A class representing a Quadratic Unconstrained Binary Optimization (QUBO) problem instance.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sense</strong> (<em>HybridSolverOptSenses</em>) – (optional )An enum representing the optimization sense of the QUBO.
+Defaults to <cite>HybridSolverOptSenses.MAXIMIZE</cite>.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – (optional) The name of the QUBO model.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.sense">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sense</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">HybridSolverOptSenses</span></em><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.sense" title="Link to this definition">#</a></dt>
+<dd><p>The optimization sense of the QUBO of type <code class="xref py py-class docutils literal notranslate"><span class="pre">HybridSolverOptSenses</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The optimization sense of the QUBO model.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">HybridSolverOptSenses</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.name" title="Link to this definition">#</a></dt>
+<dd><p>The name of the QUBO model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The name of the QUBO model.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.add_variable">
+<span class="sig-name descname"><span class="pre">add_variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fixing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="m"><span class="pre">0</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="m"><span class="pre">1</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disable_warnings</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QuboVariable</span></span></span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.add_variable" title="Link to this definition">#</a></dt>
+<dd><p>Adds a new variable to the QUBO.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>QUBO Variables are binary and can take a value in {0, 1, None}.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – The name of the variable.</p></li>
+<li><p><strong>initial</strong> (<em>0</em><em> or </em><em>1</em>) – The initial value of the variable. Defaults to <cite>None</cite>.</p></li>
+<li><p><strong>fixing</strong> (<em>0</em><em> or </em><em>1</em>) – The value to which the variable should be fixed. Defaults to <cite>None</cite>.</p></li>
+<li><p><strong>disable_warnings</strong> (<em>bool</em>) – If <cite>True</cite>, disables the warning message that is displayed when a variable</p></li>
+<li><p><strong>False.</strong> (<em>with the same name is already in the QUBO. Defaults to</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboVariable</span></code> that was added to the QUBO.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QuboVariable</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Warning</strong> – If initial not in {0, 1, None}.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.variable">
+<span class="sig-name descname"><span class="pre">variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">QuboVariable</span></span></span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.variable" title="Link to this definition">#</a></dt>
+<dd><p>Returns the <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboVariable</span></code> with the specified name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – A string of the name of the <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboVariable</span></code> to retrieve.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboVariable</span></code> with the specified name.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QuboVariable</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>KeyError</strong> – If no <code class="xref py py-class docutils literal notranslate"><span class="pre">QuboVariable</span></code> with the specified name exists in the QUBO.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.eval">
+<span class="sig-name descname"><span class="pre">eval</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">float</span></span></span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.eval" title="Link to this definition">#</a></dt>
+<dd><p>Returns the objective function value for the current variable assignment. After solving, it provides
+the optimal value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The value of the QUBO’s objective function.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.is_valid">
+<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.is_valid" title="Link to this definition">#</a></dt>
+<dd><p>Checks that all terms are in the upper triangle and that they have been reduced in the right way.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Indicating whether conditions are all true.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.write_qubo">
+<span class="sig-name descname"><span class="pre">write_qubo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.write_qubo" title="Link to this definition">#</a></dt>
+<dd><p>Writes QUBO to file in the Quantagonia QUBO format.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – Path as string to the destined file.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>Exception</strong> – If the QUBO is not valid.</p></li>
+<li><p><strong>FileNotFoundError</strong> – If the path or file cannot be found.</p></li>
+<li><p><strong>PermissionError</strong> – If program does not have sufficient permissions to access the file.</p></li>
+<li><p><strong>TypeError</strong> – If path is not a string.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.get_number_of_nonzeros_of_upper_triangle">
+<span class="sig-name descname"><span class="pre">get_number_of_nonzeros_of_upper_triangle</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.get_number_of_nonzeros_of_upper_triangle" title="Link to this definition">#</a></dt>
+<dd><p>Get the number of nonzero entries for the upper triangle matrix. This corresponds to the number of terms in
+the objective function, excluding the shift.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Integer representing the number of nonzero entries for the upper triangle matrix.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.get_number_of_nonzeros_of_full_matrix">
+<span class="sig-name descname"><span class="pre">get_number_of_nonzeros_of_full_matrix</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">int</span></span></span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.get_number_of_nonzeros_of_full_matrix" title="Link to this definition">#</a></dt>
+<dd><p>Compute number of nonzero entries of the full matrix on demand.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Integer representing the number of nonzero entries of the full matrix.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.read_qubo">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">read_qubo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><span class="pre">QuboModel</span></a></span></span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.read_qubo" title="Link to this definition">#</a></dt>
+<dd><p>Reads a QUBO from file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – String containing the path to the QUBO file.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The QUBO.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel">QuboModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.from_qiskit_qubo">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_qiskit_qubo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QuadraticProgram</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><span class="pre">QuboModel</span></a></span></span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.from_qiskit_qubo" title="Link to this definition">#</a></dt>
+<dd><p>Converts a QUBO in Qiskits QuadraticProgram format to a <a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>qp</strong> (<em>qiskit_optimization.problems.quadratic_program.QuadraticProgram</em>) – The Quiskit QP to be converted.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The resulting <a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code></a>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel">QuboModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.from_dwave_bqm">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_dwave_bqm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bqm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">BinaryQuadraticModel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'fromdwaveqbm'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><span class="pre">QuboModel</span></a></span></span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.from_dwave_bqm" title="Link to this definition">#</a></dt>
+<dd><p>Converts a D-Wave BQM to a <a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code></a>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bqm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">dimod.BinaryQuadraticModel</span></code>) – The <code class="xref py py-class docutils literal notranslate"><span class="pre">dimod.BinaryQuadraticModel</span></code> to be converted.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – The name of the QUBO model.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The resulting <a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code></a>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel">QuboModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.from_pyqubo">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_pyqubo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pqm</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Model</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">constants</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'frompyqubo'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><span class="pre">QuboModel</span></a></span></span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.from_pyqubo" title="Link to this definition">#</a></dt>
+<dd><p>Reads a PyQUBO quadratic model into a <a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code></a> that can be solved by Quantagonia solvers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>pqm</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">pyqubo.Model</span></code>) – A <code class="xref py py-class docutils literal notranslate"><span class="pre">pyqubo.Model</span></code> to be converted.</p></li>
+<li><p><strong>constants</strong> (<em>dict</em>) – A dictionary of constant values that can be used in the conversion.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – The name of the QUBO model.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The resulting <a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">QuboModel</span></code></a>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#quantagonia.qubo.model.QuboModel" title="quantagonia.qubo.model.QuboModel">QuboModel</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="quantagonia.qubo.model.QuboModel.solve">
+<span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hybrid_solver:</span> <span class="pre">CloudRunner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params:</span> <span class="pre">~quantagonia.parameters.HybridSolverParameters</span> <span class="pre">=</span> <span class="pre">&lt;quantagonia.parameters.HybridSolverParameters</span> <span class="pre">object&gt;</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#quantagonia.qubo.model.QuboModel.solve" title="Link to this definition">#</a></dt>
+<dd><p>Solves the QUBO using the given HybridSolver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>hybrid_solver</strong> (<a class="reference internal" href="#quantagonia.HybridSolver" title="quantagonia.HybridSolver"><em>HybridSolver</em></a>) – HybridSolver instance used to solve the QUBO.</p></li>
+<li><p><strong>params</strong> (<a class="reference internal" href="#quantagonia.HybridSolverParameters" title="quantagonia.HybridSolverParameters"><em>HybridSolverParameters</em></a>) – Solver parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>List of solver results. It contains a dictionary containing the keys ‘status’,</dt><dd><p>’solver_log’, ‘sol_status’, ‘timing’, ‘objective’, ‘bound’, ‘absolute_gap’, ‘relative_gap’,
+‘iterations’, ‘nodes’, ‘nodes_per_sec’, ‘best_node’, ‘best_time’, ‘num_quantum_solutions’,
+‘solver_mix’, and ‘solution’.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dict[str, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#submitting-tasks">Submitting tasks</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolver"><code class="docutils literal notranslate"><span class="pre">HybridSolver</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolver.cancel"><code class="docutils literal notranslate"><span class="pre">cancel()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolver.logs"><code class="docutils literal notranslate"><span class="pre">logs()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolver.progress"><code class="docutils literal notranslate"><span class="pre">progress()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolver.solve"><code class="docutils literal notranslate"><span class="pre">solve()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolver.status"><code class="docutils literal notranslate"><span class="pre">status()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolver.submit"><code class="docutils literal notranslate"><span class="pre">submit()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solver-parameters">Solver Parameters</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolverParameters"><code class="docutils literal notranslate"><span class="pre">HybridSolverParameters</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolverParameters.set_relative_gap"><code class="docutils literal notranslate"><span class="pre">set_relative_gap()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolverParameters.set_absolute_gap"><code class="docutils literal notranslate"><span class="pre">set_absolute_gap()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolverParameters.set_time_limit"><code class="docutils literal notranslate"><span class="pre">set_time_limit()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolverParameters.set_as_qubo"><code class="docutils literal notranslate"><span class="pre">set_as_qubo()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolverParameters.set_as_qubo_only"><code class="docutils literal notranslate"><span class="pre">set_as_qubo_only()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolverParameters.set_presolve"><code class="docutils literal notranslate"><span class="pre">set_presolve()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolverParameters.set_seed"><code class="docutils literal notranslate"><span class="pre">set_seed()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolverParameters.set_heuristics_only"><code class="docutils literal notranslate"><span class="pre">set_heuristics_only()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.HybridSolverParameters.set_objective_limit"><code class="docutils literal notranslate"><span class="pre">set_objective_limit()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-mips">Modeling MIPs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.mip.pulp_adapter.HybridSolver_CMD"><code class="docutils literal notranslate"><span class="pre">HybridSolver_CMD</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modeling-qubos">Modeling QUBOs</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.qubo.model.QuboModel"><code class="docutils literal notranslate"><span class="pre">QuboModel</span></code></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.qubo.model.QuboModel.sense"><code class="docutils literal notranslate"><span class="pre">sense</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.qubo.model.QuboModel.name"><code class="docutils literal notranslate"><span class="pre">name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.qubo.model.QuboModel.add_variable"><code class="docutils literal notranslate"><span class="pre">add_variable()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.qubo.model.QuboModel.variable"><code class="docutils literal notranslate"><span class="pre">variable()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.qubo.model.QuboModel.eval"><code class="docutils literal notranslate"><span class="pre">eval()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.qubo.model.QuboModel.is_valid"><code class="docutils literal notranslate"><span class="pre">is_valid()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.qubo.model.QuboModel.write_qubo"><code class="docutils literal notranslate"><span class="pre">write_qubo()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.qubo.model.QuboModel.get_number_of_nonzeros_of_upper_triangle"><code class="docutils literal notranslate"><span class="pre">get_number_of_nonzeros_of_upper_triangle()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.qubo.model.QuboModel.get_number_of_nonzeros_of_full_matrix"><code class="docutils literal notranslate"><span class="pre">get_number_of_nonzeros_of_full_matrix()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.qubo.model.QuboModel.read_qubo"><code class="docutils literal notranslate"><span class="pre">read_qubo()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.qubo.model.QuboModel.from_qiskit_qubo"><code class="docutils literal notranslate"><span class="pre">from_qiskit_qubo()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.qubo.model.QuboModel.from_dwave_bqm"><code class="docutils literal notranslate"><span class="pre">from_dwave_bqm()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.qubo.model.QuboModel.from_pyqubo"><code class="docutils literal notranslate"><span class="pre">from_pyqubo()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantagonia.qubo.model.QuboModel.solve"><code class="docutils literal notranslate"><span class="pre">solve()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Quantagonia GmbH.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
