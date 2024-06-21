@@ -1,0 +1,151 @@
+============
+API Examples
+============
+
+The following examples introduce some of the functionalities of the :code:`quantagonia` package.
+
+
+General usage
+=============
+
+Solve a single problem
+----------------------
+
+We first import the necessary modules and define the path to the input file, which can be either a QUBO or a MIP in `.qubo`, `.mps`, or, `.lp` file format.
+
+.. literalinclude:: ../../quantagonia/examples/solve_qubo.py
+    :linenos:
+    :lines: 1-5
+
+Then, we retrieve the API key stored in an environment variable and set up a :code:`HybridSolver` object.
+
+.. literalinclude:: ../../quantagonia/examples/solve_qubo.py
+    :linenos:
+    :lineno-start: 7
+    :lines: 7-8
+
+After that, we set solver parameters and solve the problem with the HybridSolver. This is a blocking call,
+i.e., the `solve` function blocks until the problem is fully processed.
+
+.. literalinclude:: ../../quantagonia/examples/solve_qubo.py
+    :linenos:
+    :lineno-start: 10
+    :lines: 10-12
+
+After the problem has been solved, we retrieve and print some information and the solution vector.
+
+.. literalinclude:: ../../quantagonia/examples/solve_qubo.py
+    :linenos:
+    :lineno-start: 14
+    :lines: 14-
+
+
+Submit and check a single problem
+---------------------------------
+Instead of using the blocking `solve` method, you can also use the `submit` method, to submit problem files
+to the HybridSolver. The method returns a `jobid`, which you can use to poll and print the progress.
+
+First, do some setup as before:
+
+.. literalinclude:: ../../quantagonia/examples/submit_and_check_mps.py
+    :linenos:
+    :lineno-start: 1
+    :lines: 1-13
+
+Then, submit the problem and retrieve a job ID:
+
+.. literalinclude:: ../../quantagonia/examples/submit_and_check_mps.py
+    :linenos:
+    :lineno-start: 15
+    :lines: 15-16
+
+We use the job ID to query the progress of the job.
+
+.. literalinclude:: ../../quantagonia/examples/submit_and_check_mps.py
+    :linenos:
+    :lineno-start: 18
+    :lines: 18-29
+
+We can also poll the status of the job and print the logs, after the job has been finished:
+
+.. literalinclude:: ../../quantagonia/examples/submit_and_check_mps.py
+    :linenos:
+    :lineno-start: 32
+    :lines: 32-40
+
+
+
+Solve a batch of problems
+-------------------------
+It is possible to submit several problems in one batched call. They do not have to be the same type, i.e., you can mix QUBOs and MIPs. Using a batched submission may be beneficial for short-running problems, for which submission times comprise a significant portion of the overall processing time. Not that in the example, the batch contains a garbage file, which cannot be read. Still, the job is processed successfully.
+
+.. literalinclude:: ../../quantagonia/examples/solve_batch.py
+    :linenos:
+    :lines: 1-
+
+
+Using monitoring callbacks
+--------------------------
+It is possible to suppress the HybridSolver's output and use a custom callback function instead, which can be used to retrieve intermediate results.
+
+.. literalinclude:: ../../quantagonia/examples/solve_qubo_monitored.py
+    :linenos:
+    :lines: 1-24
+
+
+MIP as QUBO
+------------
+A MIP can also be solved as a QUBO by setting a parameter of the :class:`HybridSolverParameters`.
+
+.. literalinclude:: ../../quantagonia/examples/solve_ip_as_qubo.py
+    :linenos:
+
+
+Model problems
+==============
+
+QUBO
+----
+This example shows how to model a QUBO problem with the :class:`QuboModel` class. Have a look at our :ref:`qubo-format` to learn about our file format.
+
+.. literalinclude:: ../../quantagonia/examples/model_qubo.py
+    :linenos:
+
+
+MIP
+---
+It is also possible to solve `PuLP <https://coin-or.github.io/pulp/index.html>`_ models with the HybridSolver.
+
+.. literalinclude:: ../../quantagonia/examples/model_mip.py
+    :linenos:
+
+
+Import QUBO problems
+====================
+
+The Quantagonia API client offers possibilities to import QUBOs from `Qiskit <https://docs.quantum.ibm.com/>`_, `D-Wave Ocean <https://docs.dwavesys.com/docs/latest/index.html>`_, and from `PyQUBO <https://pyqubo.readthedocs.io/en/latest/getting_started.html>`_.
+
+Qiskit
+------
+.. literalinclude:: ../../quantagonia/examples/import_dwave_bqm.py
+    :linenos:
+
+D-Wave Ocean
+------------
+In this example, we build the map coloring bqm model `from here <https://github.com/dwavesystems/dwave-ocean-sdk/blob/master/docs/examples/map_coloring_full_code.rst>`_ and import it into a :class:`QuboModel` to solve it with the HybridSolver.
+
+.. literalinclude:: ../../quantagonia/examples/import_dwave_bqm.py
+    :linenos:
+
+PyQUBO
+------
+In this example we model the QUBO
+
+.. math::
+
+    2x_0 + 2x_2 + 2x_4 - x_0x_2 - x_2x_0 - x_0x_4 - x_4x_0 - x_2x_4 - x_4x_2 + 3
+
+using PyQUBO methods and import it into a :class:`QuboModel` to solve it with the HybridSolver:
+
+.. literalinclude:: ../../quantagonia/examples/import_pyqubo.py
+    :linenos:
