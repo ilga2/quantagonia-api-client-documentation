@@ -1,0 +1,150 @@
+CLI Reference
+=============
+
+For help with installation and setup, see the :ref:`getting-started` section, which also contains a brief example of how to use the CLI.
+
+
+Commands
+--------
+
+version
+~~~~~~~
+
+Prints the version.
+
+.. code-block:: bash
+
+   hybridsolver version
+
+
+api-key
+~~~~~~~
+
+Prints the API key set through the environment variable :code:`QUANTAGONIA_API_KEY`.
+
+.. code-block:: bash
+
+   hybridsolver api-key
+
+
+solve
+~~~~~
+
+Solves the optimization problem given by :code:`PROBLEM_FILE`. The file must be a :code:`.mps` or a :code:`.qubo`, either plain or as :code:`.gz`. This command continuously prints the solver log.
+
+.. code-block:: bash
+
+   hybridsolver solve [OPTIONS] PROBLEM_FILE
+
+   Options:
+     --params-file STRING        Path to parameter file.
+     --relative-gap FLOAT        Stopping criterion: relative gap.
+     --absolute-gap FLOAT        Stopping criterion: absolute gap.
+     --objective-limit FLOAT     Stopping criterion: objective value.
+     --timelimit INTEGER         Stopping criterion: runtime.
+     --as-qubo BOOL              Try to solve MIP as MIP and QUBO in parallel (MIP only).
+     --as-qubo-only BOOL         Try to solve MIP only as QUBO (MIP only).
+     --presolve BOOL             Enable (default) or disable presolve.
+     --heuristics-only BOOL      Only apply primal heuristics and then terminate (QUBO only)
+     --quantum-heuristic STRING  Add given quantum heuristic to the heuristics pool.
+     --context STRING            Billing context to run the job in.
+     --tag TEXT                  Tag to identify the job later.
+     --quiet                     Disable interactive output and only show final logs.
+
+
+submit
+~~~~~~
+
+Submits the optimization problem given by :code:`PROBLEM_FILE` in a non-blocking way. The file must be a :code:`.mps` or a :code:`.qubo`, either plain or as :code:`.gz`. Use :code:`status`, :code:`logs`, :code:`monitor`, or :code:`solution` commands to get information and results.
+
+.. code-block:: bash
+
+   hybridsolver submit [OPTIONS] PROBLEM_FILE
+
+   Options:
+     --params-file STRING        Path to parameter file.
+     --relative-gap FLOAT        Stopping criterion: relative gap.
+     --absolute-gap FLOAT        Stopping criterion: absolute gap.
+     --objective-limit FLOAT     Stopping criterion: objective value.
+     --timelimit INTEGER         Stopping criterion: runtime.
+     --as-qubo BOOL              Try to solve MIP as MIP and QUBO in parallel (MIP only).
+     --as-qubo-only BOOL         Try to solve MIP only as QUBO (MIP only).
+     --presolve BOOL             Enable (default) or disable presolve.
+     --heuristics-only BOOL      Only apply primal heuristics and then terminate (QUBO only)
+     --quantum-heuristic STRING  Add given quantum heuristic to the heuristics pool.
+     --context STRING            Billing context to run the job in.
+     --tag TEXT                  Tag to identify the job later.
+     --quiet                     Disable interactive output and only show final logs.
+
+
+status
+~~~~~~
+
+Retrieves the status of the job given by :code:`JOB_ID`. The returned status is one of :code:`CREATED`, :code:`RUNNING`, :code:`FINISHED`, :code:`SUCCESS`, :code:`TIMEOUT`, :code:`TERMINATED`, or :code:`ERROR`. For batched jobs, the optional parameter :code:`item` selects the item of the batch.
+
+.. code-block:: bash
+
+   hybridsolver status JOB_ID [item]
+
+
+logs
+~~~~
+
+Prints the current logs of the job given by :code:`JOB_ID`. For batched jobs, the optional parameter :code:`item` selects the item of the batch. Note that this only prints a non-blocking snapshot of the logs and does not continuously update the logs until the job is finished. For the latter behavior, please see the :code:`monitor` command.
+
+.. code-block:: bash
+
+   hybridsolver logs JOB_ID [item]
+
+
+monitor
+~~~~~~~
+
+Resumes monitoring the progress (i.e., logs) of the job given by :code:`JOB_ID`. In contrast to the :code:`logs` command, this command works in a blocking way and continuously updates the log until the job is finished. For batched jobs, the optional parameter :code:`item` selects the item of the batch to monitor. This command is usually used after submitting a job using the :code:`submit` command.
+
+.. code-block:: bash
+
+   hybridsolver monitor JOB_ID [item]
+
+
+solution
+~~~~~~~~
+
+Retrieves the solution vector of the job given by :code:`JOB_ID` if its computation completed with success. For batched jobs, the optional parameter :code:`item` selects the item of the batch.
+
+.. code-block:: bash
+
+   hybridsolver solution JOB_ID [item]
+
+
+time-billed
+~~~~~~~~~~~
+
+Prints the time billed for the job given by :code:`JOB_ID` in minutes.
+
+.. code-block:: bash
+
+   hybridsolver time_billed JOB_ID
+
+
+cancel
+~~~~~~
+
+Cancels the job given by :code:`JOB_ID`.
+
+.. code-block:: bash
+
+   hybridsolver cancel JOB_ID
+
+
+list
+~~~~
+
+Lists the :code:`n` latest submitted jobs for the API key given in :code:`QUANTAGONIA_API_KEY`.
+
+.. code-block:: bash
+
+   hybridsolver list [OPTIONS]
+
+   Options:
+     -n, --max-jobs INTEGER    Maximum number of jobs to display.
