@@ -1,0 +1,108 @@
+.. _getting-started:
+
+===============
+Getting Started
+===============
+
+What you can do
+===============
+
+Quantagonia's HybridSolver is a **cloud-based mathematical optimization** solver that utilizes **CPUs**, **GPUs**, and **QPUs**. It allows to solve several classes of challenging optimization problems. Among others, you can tackle mixed-integer linear problems (**MILPs**) and quadratic unconstrained binary optimization (**QUBO**) problems. Depending on the settings, the solver uses classic and hybrid **branch-and-cut** and novel **classic-quantum decomposition** approaches.
+
+The package can be used in two ways:
+
+1. A lightweight command-line interface (CLI) allows you to submit optimization tasks and track their progress  from the command line.
+2. A Python API lets you call the HybridSolver directly from your Python codebase.
+
+This guide covers the first steps to use both the CLI and the API of the HybridSolver.
+
+
+Setup
+=====
+The HybridSolver CLI and API client are available as a Python package on `PyPI <https://pypi.org/project/quantagonia-api-client/>`_. Note that Python >= 3.8, < 3.12 is required.
+
+1. Simply pip install the package, preferably inside a virtual environment:
+
+   .. code-block:: bash
+
+      pip install quantagonia
+
+2. Set up authentication for the Quantagonia Cloud to be able to submit compute jobs to the cloud-based solver. If you don't have an API key yet, sign up for a free plan at `platform.quantagonia.com <https://platform.quantagonia.com>`_ and store it in an environment variable:
+
+   .. code-block:: bash
+
+      export QUANTAGONIA_API_KEY=<YOUR_API_KEY>
+      #for windows users: set QUANTAGONIA_API_KEY=<YOUR_API_KEY>
+
+
+Command-Line Interface
+======================
+The command-line interface (CLI) allows you to submit and monitor optimization problems seamlessly and with minimal setup effort. If you followed the steps above, a :code:`hybridsolver` binary is available in your path. The binary accepts several commands, e.g., to :code:`submit`, :code:`monitor`, or :code:`cancel` an optimization task.
+
+For a practical example, let’s say you have a mixed-integer linear optimization problem stored in `MPS format <https://en.wikipedia.org/wiki/MPS_(format)>`_ in the file :code:`my_problem.mps`. You can easily submit this problem to the cloud-based HybridSolver by making a simple call
+
+
+.. code:: console
+
+    hybridsolver submit my_problem.mps
+
+which gives an output similar to:
+
+.. code:: console
+
+   ✅ Submitted job with ID: 29870456-8837-4434-9e6b-1f68e38e2d7c
+
+You can use the given ID to monitor the progress of the solver as follows:
+
+.. code:: console
+
+    hybridsolver monitor 29870456-8837-4434-9e6b-1f68e38e2d7c
+
+This streams the solver’s progress to the console in real-time. If the log indicates that the problem has been solved successfully, the command
+
+.. code:: console
+
+    hybridsolver solution 29870456-8837-4434-9e6b-1f68e38e2d7c
+
+retrieves and prints the optimal solution vector to the console. Note that there is also a :code:`solve` command, which combines the :code:`submit` and :code:`monitor` commands and, hence, immediately streams the solver output after submitting the job.
+
+
+Python API Client
+=================
+
+Instead of using the CLI, you can also call the HybridSolver within Python by importing the :code:`quantagonia` package. This requires that you have followed the setup steps above. Then, set up a connection to the HybridSolver:
+
+.. code-block::
+
+    from quantagonia import HybridSolver, HybridSolverParameters
+
+    api_key = "QUANTAGONIA_API_KEY"
+    hybrid_solver = HybridSolver(api_key)
+
+To solve an MPS file, setup solver parameters and use the :code:`solve` method:
+
+.. code-block::
+
+    # choose input file
+    import os
+    input_file_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "example.mps")
+
+    # setup parameters
+    params = HybridSolverParameters()
+    params.set_time_limit(180)
+
+    # solve problem
+    res_dict, _ = hybrid_solver.solve(input_file_path, params)
+
+
+On successful execution, the process returns a dictionary containing the results:
+
+.. code-block::
+
+    # display information and solution values
+    print("Runtime:", res_dict["timing"])
+    print("Objective:", res_dict["objective"])
+    print("Bound:", res_dict["bound"])
+    print("Solution values:")
+    for idx, val in res_dict["solution"].items():
+        print(f"\t{idx}: {val}")

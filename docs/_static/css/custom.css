@@ -1,0 +1,21 @@
+html[data-theme="light"] {
+    --pst-color-primary: black;
+    --pst-color-secondary: #4bd49c;
+}
+
+html[data-theme="dark"] {
+    --pst-color-primary: white;
+    --pst-color-secondary: #4bd49c;
+}
+
+.bd-footer {
+    border-top: none;
+}
+.bd-main .bd-content .bd-article-container {
+  max-width: 80%;  /* default is 60em */
+}
+@media (min-width: 960px) {
+    .bd-page-width {
+	max-width: 100%!important;
+    }
+}

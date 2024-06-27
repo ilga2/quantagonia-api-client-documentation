@@ -1,0 +1,584 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Getting Started &#8212; HybridSolver - documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css?v=d2b2b47f" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=b1628c55"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'getting_started';</script>
+    <link rel="icon" href="_static/icon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="CLI Reference" href="cli-ref.html" />
+    <link rel="prev" title="Quantagonia HybridSolver Documentation" href="index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo_black.png" class="logo__image only-light" alt="HybridSolver - documentation - Home"/>
+    <script>document.write(`<img src="_static/logo_white.png" class="logo__image only-dark" alt="HybridSolver - documentation - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="index.html">
+    HybridSolver
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="cli-ref.html">
+    CLI Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api-ref.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="examples.html">
+    API Examples
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="qubo_format.html">
+    Quantagonia QUBO File Format
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/quantagonia-api-client/" title="PyPI Quantagonia API Client" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://seeklogo.com/images/P/python-package-index-logo-F2EC9F1F8C-seeklogo.com.png" class="icon-link-image" alt="PyPI Quantagonia API Client"/></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="index.html">
+    HybridSolver
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    Getting Started
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="cli-ref.html">
+    CLI Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="api-ref.html">
+    API Reference
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="examples.html">
+    API Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="qubo_format.html">
+    Quantagonia QUBO File Format
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+            
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/quantagonia-api-client/" title="PyPI Quantagonia API Client" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><img src="https://seeklogo.com/images/P/python-package-index-logo-F2EC9F1F8C-seeklogo.com.png" class="icon-link-image" alt="PyPI Quantagonia API Client"/></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Getting Started</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="getting-started">
+<span id="id1"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h1>
+<section id="what-you-can-do">
+<h2>What you can do<a class="headerlink" href="#what-you-can-do" title="Link to this heading">#</a></h2>
+<p>Quantagonia’s HybridSolver is a <strong>cloud-based mathematical optimization</strong> solver that utilizes <strong>CPUs</strong>, <strong>GPUs</strong>, and <strong>QPUs</strong>. It allows to solve several classes of challenging optimization problems. Among others, you can tackle mixed-integer linear problems (<strong>MILPs</strong>) and quadratic unconstrained binary optimization (<strong>QUBO</strong>) problems. Depending on the settings, the solver uses classic and hybrid <strong>branch-and-cut</strong> and novel <strong>classic-quantum decomposition</strong> approaches.</p>
+<p>The package can be used in two ways:</p>
+<ol class="arabic simple">
+<li><p>A lightweight command-line interface (CLI) allows you to submit optimization tasks and track their progress  from the command line.</p></li>
+<li><p>A Python API lets you call the HybridSolver directly from your Python codebase.</p></li>
+</ol>
+<p>This guide covers the first steps to use both the CLI and the API of the HybridSolver.</p>
+</section>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<p>The HybridSolver CLI and API client are available as a Python package on <a class="reference external" href="https://pypi.org/project/quantagonia-api-client/">PyPI</a>. Note that Python &gt;= 3.8, &lt; 3.12 is required.</p>
+<ol class="arabic">
+<li><p>Simply pip install the package, preferably inside a virtual environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>quantagonia
+</pre></div>
+</div>
+</li>
+<li><p>Set up authentication for the Quantagonia Cloud to be able to submit compute jobs to the cloud-based solver. If you don’t have an API key yet, sign up for a free plan at <a class="reference external" href="https://platform.quantagonia.com">platform.quantagonia.com</a> and store it in an environment variable:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">QUANTAGONIA_API_KEY</span><span class="o">=</span>&lt;YOUR_API_KEY&gt;
+<span class="c1">#for windows users: set QUANTAGONIA_API_KEY=&lt;YOUR_API_KEY&gt;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="command-line-interface">
+<h2>Command-Line Interface<a class="headerlink" href="#command-line-interface" title="Link to this heading">#</a></h2>
+<p>The command-line interface (CLI) allows you to submit and monitor optimization problems seamlessly and with minimal setup effort. If you followed the steps above, a <code class="code docutils literal notranslate"><span class="pre">hybridsolver</span></code> binary is available in your path. The binary accepts several commands, e.g., to <code class="code docutils literal notranslate"><span class="pre">submit</span></code>, <code class="code docutils literal notranslate"><span class="pre">monitor</span></code>, or <code class="code docutils literal notranslate"><span class="pre">cancel</span></code> an optimization task.</p>
+<p>For a practical example, let’s say you have a mixed-integer linear optimization problem stored in <a class="reference external" href="https://en.wikipedia.org/wiki/MPS_(format)">MPS format</a> in the file <code class="code docutils literal notranslate"><span class="pre">my_problem.mps</span></code>. You can easily submit this problem to the cloud-based HybridSolver by making a simple call</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hybridsolver submit my_problem.mps</span>
+</pre></div>
+</div>
+<p>which gives an output similar to:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">✅ Submitted job with ID: 29870456-8837-4434-9e6b-1f68e38e2d7c</span>
+</pre></div>
+</div>
+<p>You can use the given ID to monitor the progress of the solver as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hybridsolver monitor 29870456-8837-4434-9e6b-1f68e38e2d7c</span>
+</pre></div>
+</div>
+<p>This streams the solver’s progress to the console in real-time. If the log indicates that the problem has been solved successfully, the command</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">hybridsolver solution 29870456-8837-4434-9e6b-1f68e38e2d7c</span>
+</pre></div>
+</div>
+<p>retrieves and prints the optimal solution vector to the console. Note that there is also a <code class="code docutils literal notranslate"><span class="pre">solve</span></code> command, which combines the <code class="code docutils literal notranslate"><span class="pre">submit</span></code> and <code class="code docutils literal notranslate"><span class="pre">monitor</span></code> commands and, hence, immediately streams the solver output after submitting the job.</p>
+</section>
+<section id="python-api-client">
+<h2>Python API Client<a class="headerlink" href="#python-api-client" title="Link to this heading">#</a></h2>
+<p>Instead of using the CLI, you can also call the HybridSolver within Python by importing the <code class="code docutils literal notranslate"><span class="pre">quantagonia</span></code> package. This requires that you have followed the setup steps above. Then, set up a connection to the HybridSolver:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">quantagonia</span> <span class="kn">import</span> <span class="n">HybridSolver</span><span class="p">,</span> <span class="n">HybridSolverParameters</span>
+
+<span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;QUANTAGONIA_API_KEY&quot;</span>
+<span class="n">hybrid_solver</span> <span class="o">=</span> <span class="n">HybridSolver</span><span class="p">(</span><span class="n">api_key</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To solve an MPS file, setup solver parameters and use the <code class="code docutils literal notranslate"><span class="pre">solve</span></code> method:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># choose input file</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">input_file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)),</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;example.mps&quot;</span><span class="p">)</span>
+
+<span class="c1"># setup parameters</span>
+<span class="n">params</span> <span class="o">=</span> <span class="n">HybridSolverParameters</span><span class="p">()</span>
+<span class="n">params</span><span class="o">.</span><span class="n">set_time_limit</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span>
+
+<span class="c1"># solve problem</span>
+<span class="n">res_dict</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">hybrid_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">input_file_path</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>On successful execution, the process returns a dictionary containing the results:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># display information and solution values</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Runtime:&quot;</span><span class="p">,</span> <span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;timing&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Objective:&quot;</span><span class="p">,</span> <span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;objective&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bound:&quot;</span><span class="p">,</span> <span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;bound&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution values:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">res_dict</span><span class="p">[</span><span class="s2">&quot;solution&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-you-can-do">What you can do</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-line-interface">Command-Line Interface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-api-client">Python API Client</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Quantagonia GmbH.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
